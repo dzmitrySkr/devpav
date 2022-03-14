@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  background-color: #282c34 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+
+}
+
+.main h1 {
+  color: azure;
+  padding-top: 50px;
+}
+
+.ant-btn-primary {
+  margin: 10px 20px;
+  width: 250px;
+
+}
+
+.home_button{
+  text-align: left;
+  padding: 50px;
+}
+
+body .ant-form {
+  margin-top: 20px;
+}
+
+body .ant-radio-group{
+  margin-bottom : 20px;
+  
+}
+
+body .ant-switch{
+  margin-bottom : 20px;
+  color:white;
+}
+
+body .ant-form-item-label > label{
+  color:white;
+}
+
+body p {
+  color:white;
+}
+
+body .ant-radio-wrapper {
+  color:white; 
+}
+
+body .ant-checkbox-wrapper {
+  color:white; 
+}
