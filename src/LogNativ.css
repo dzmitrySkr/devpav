@@ -1,0 +1,51 @@
+.formtitle {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 25px;
+}
+
+.username input {
+    color:black
+}
+
+input{
+    outline: none; 
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+}
+
+input:focus{
+outline: none;
+border: #1890ff 2px solid;
+border-radius: 3px;
+box-sizing: border-box;
+}
+
+
+.span{
+    color: red;
+}
+
+.checkbox{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top:4px;
+    right: 4px;
+}
+
+.smbbtn {
+    width: 200px;
+    background-color: #1890ff;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    margin-left: 75px;
+    height: 35px;
+}
+
+form h2 {
+    color: aquamarine;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
