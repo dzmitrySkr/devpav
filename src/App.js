@@ -16,6 +16,7 @@ import Form from "./Form";
 import Routerr from "./Routerr";
 import Fragment from "./Fragment";
 import Memo from "./Memo";
+import UseEffect from "./useEffect";
 
 function App() {
 
@@ -86,7 +87,7 @@ function App() {
 
           <div className="article">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home name = {'Vasiliy'} />} />
               <Route path="components" element={<Components />} />
               <Route path="props" element={<Props />} />
               <Route path="state" element={<State />} />
@@ -99,7 +100,7 @@ function App() {
 
               <Route path="fragment" element={<Fragment />} />
               <Route path="reactmemo" element={<Memo />} />
-              <Route path="useeffect" element={<useEffect />} />
+              <Route path="useeffect" element={<UseEffect />} />
               <Route path="router" element={<Routerr />} />
               <Route path="context" element={<Context />} />
               <Route path="form" element={<Form />} />
