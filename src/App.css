@@ -1,38 +1,99 @@
-.App {
+body{
+  background-color: #191b20;;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex_container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+
+.menu{
+  width: 15%;
+  background-color: #41464e;
+ 
+}
+
+.article{
+  width: 83%;
+  background-color: #191b20;
+  color: whitesmoke;
+  padding: 10px;
+
+}
+
+
+.item{
+  background-color: black;
+  margin:10px 5px ;
+  transition: 0.5s;
+  border-radius: 2px;
+  border: 1px rgb(0, 0, 0) solid;
+}
+
+.menu a{
+  text-decoration: none;
+  color:#7fb2ff;
+  font-size: 20px;
+}
+
+.item:hover{
+  border: 1px white solid;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.active {
+  background-color: azure;
+  transition: 0.5s;
+  color: rgb(0, 0, 148);
+}
+
+.example{
+  background-color: #41464e;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-size: 17px;
+  text-align: left;
+}
+
+.content{
+  text-align: left;
+  line-height: 27px;
+  font-size: 18px;
+}
+
+
+.important {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.count{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.counter{
+  color: rgb(247, 255, 175);
+  font-weight: 700;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.count>*{
+  margin: 10px;
+}
+
+.image_container{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.image{
+  width: 100%;
 }
