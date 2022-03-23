@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+.flexcontainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #3c434b;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 18px 2px #14171b;
+  padding: 0px 10px;
+  min-width: 368px;
+}
+
+.inline {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.input {
+  background-color: #3c434b;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  border: 0;
+  outline:none;
+
+}
