@@ -1,29 +1,37 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
+function Onetask({ name, del, change }) {
+  let [inputstate, setInputstate] = useState(true);
 
-function Onetask({name, del, change}){
+  let toggle = () => {
+    inputstate ? setInputstate(false) : setInputstate(true);
+  };
 
-    let [inputstate, setInputstate] = useState(true)
-
-    let toggle = () => {
-    inputstate ? setInputstate(false) : setInputstate(true)
-    }
-
-
-
-   
-
-    return(
+  return (
     <div className="flexcontainer">
-    {inputstate ? <p>{name}</p> : <input autoFocus className="input" onChange={(e) => change(e, name)} value = {name}></input> }
-    <div >
-    <p className="inline" onClick={ () => toggle()}> 🙉 </p>   
-    <p className="inline" onClick={ () => del(name)}>❌</p>
-    
+      {inputstate ? (
+        <p onClick={() => toggle()}>{name}</p>
+      ) : (
+        <input
+          value={name}
+          autoFocus
+          className="input"
+          onClick={() => toggle()}
+          onKeyPress={(e) => (e.key === "Enter" ? toggle() : null)}
+          onChange={(e) => change(e, name)}
+        ></input>
+      )}
+      <div>
+        <p className="inline" onClick={() => toggle()}>
+          {" "}
+          🙉{" "}
+        </p>
+        <p className="inline" onClick={() => del(name)}>
+          ❌
+        </p>
+      </div>
     </div>
-    </div>
-    )
+  );
 }
 
-
-export default Onetask
+export default Onetask;
