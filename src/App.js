@@ -17,8 +17,10 @@ import Routerr from "./Routerr";
 import Fragment from "./Fragment";
 import Memo from "./Memo";
 import UseEffect from "./useEffect";
+import Newcomp from "./newcomp";
 
-function App() {
+
+function App({}) {
 
 
   let addactive = (e) => {
@@ -29,7 +31,12 @@ function App() {
     }
   };
 
+
+
   return (
+
+  
+    
     <BrowserRouter>
       <div className="App">
         <div className="flex_container">
@@ -86,10 +93,11 @@ function App() {
           </div>
 
           <div className="article">
+            
             <Routes>
               <Route path="/" element={<Home name = {'Vasiliy'} />} />
               <Route path="components" element={<Components />} />
-              <Route path="props" element={<Props />} />
+              <Route path="props" element={<Props name = {'Katya'} />} />
               <Route path="state" element={<State />} />
               <Route path="lifestyle" element={<Lifestyle />} />
               <Route path="events" element={<Events />} />
@@ -97,14 +105,15 @@ function App() {
               <Route path="refs" element={<Refs />} />
               <Route path="asrequest" element={<Asrequest />} />
               <Route path="vdom" element={<Vdom />} />
-
               <Route path="fragment" element={<Fragment />} />
               <Route path="reactmemo" element={<Memo />} />
               <Route path="useeffect" element={<UseEffect />} />
               <Route path="router" element={<Routerr />} />
               <Route path="context" element={<Context />} />
               <Route path="form" element={<Form />} />
+        
             </Routes>
+          
           </div>
         </div>
       </div>

@@ -1,8 +1,28 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+
 
 function Lifestyle() {
+
+
+const [data, dataSet] = useState([])
+
+  useEffect(() => {
+    async function fetchMyAPI() {
+      let response = await fetch('http://hp-api.herokuapp.com/api/characters')
+      response = await response.json()
+      let b = JSON.stringify(response)
+      dataSet(response)
+    }
+    fetchMyAPI()
+  })
+
+
   return (
     <Fragment>
+    
+ 
+      <div> {data.map(el => <div>{el.name}</div>)}</div>
+
       <h2 className="article_title">LifeStyle</h2>
       <p className="content">Основные методы жизненного цикла:</p>
 

@@ -1,6 +1,18 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+
 
 function Refs() {
+
+
+let sss = useRef()
+
+useEffect(()=>{
+    sss.current.focus()
+})
+
+
+
+
   return (
     <Fragment>
       <h2 className="article_title">Refs</h2>
@@ -8,6 +20,8 @@ function Refs() {
         Refs («ссылки») предоставляет способ доступа к DOM-узлам или
         React-элементам, созданным в методе {"render()"} .
       </p>
+
+      <input ref = {sss}></input>
 
       <p className="content">
         Есть несколько хороших примеров использования Refs:

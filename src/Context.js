@@ -1,4 +1,8 @@
 import { Fragment, useState } from "react";
+import mycontext from "./Mycontext";
+import Das from "./Das";
+
+
 
 function Context() {
   return (
@@ -86,6 +90,10 @@ function Context() {
 
       <p className="content"><span className="important">Контекст лучше всего создавать в отдельном файле.</span> 
       </p>
+
+      <mycontext.Provider value = 'hello my friend'>
+        <Das />
+      </mycontext.Provider>
 
       <p className="content">
       Компонент, вызывающий useContext, всегда будет перерендериваться при изменении значения контекста. Если повторный рендер компонента затратен, вы можете оптимизировать его с помощью мемоизации.

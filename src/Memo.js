@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import React from "react";
 
 function Memo() {
   return (
@@ -71,4 +72,4 @@ export default React.memo(MyComponent, areEqual);
   );
 }
 
-export default Memo;
+export default React.memo(Memo);

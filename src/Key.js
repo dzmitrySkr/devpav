@@ -1,6 +1,9 @@
 import { Fragment, useState } from "react";
 
 function Keys() {
+
+  const numbers = [1, 2, 3, 4, 5];
+
   return (
     <Fragment>
       <h2 className="article_title">Keys</h2>
@@ -22,6 +25,17 @@ function Keys() {
                       `}
         </pre>
       </div>
+
+      {numbers.map((number) =>
+       <p key={number.toString()}>
+         {number}
+       </p>)}
+
+
+       <p className="content">
+         Выше реализация добавления уникального ключа при цикличном выводе элеменов
+       </p>
+
 
       <p className="content">
         Лучший способ выбрать ключ — это использовать строку, которая будет явно

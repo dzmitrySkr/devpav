@@ -1,9 +1,10 @@
 import { Fragment } from "react";
 
-function Props() {
+function Props({name}) {
   return (
     <Fragment>
       <h2 className="article_title">Props</h2>
+      <p>{name}</p>
       <p className="content">
         То, что мы называем аргументами в мире функций, в мире компонентов
         называется свойствами.
