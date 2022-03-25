@@ -4,7 +4,7 @@ function Onetask({ name, del, change }) {
   let [inputstate, setInputstate] = useState(true);
 
   let toggle = () => {
-    inputstate ? setInputstate(false) : setInputstate(true);
+   setInputstate(!inputstate);
   };
 
   return (
@@ -17,7 +17,7 @@ function Onetask({ name, del, change }) {
           autoFocus
           className="input"
           onClick={() => toggle()}
-          onKeyPress={(e) => (e.key === "Enter" ? toggle() : null)}
+          onKeyPress={(e) => (e.key === "Enter" && toggle())}
           onChange={(e) => change(e, name)}
         ></input>
       )}

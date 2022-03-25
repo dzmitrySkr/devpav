@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Onetask from "./Onetask.js";
 
-function Mytasks() {
+function TaskApp() {
   //Наши задания
   let [tasks, setTasks] = useState([
     { id: 0, name: "i should throw garbige" },
@@ -40,7 +40,7 @@ function Mytasks() {
     <div>
       <h1>Мои задачи</h1>
 
-      {tasks.map((task) => (
+      {Array.isArray(tasks) && tasks.map((task) => (
         <Onetask name={task.name} key={task.id} del={del} change={change} />
       ))}
 
@@ -50,4 +50,4 @@ function Mytasks() {
   );
 }
 
-export default Mytasks;
+export default TaskApp;

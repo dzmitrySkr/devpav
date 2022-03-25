@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Mytasks from './TasksApp';
+import TaskApp from './TasksApp';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <Mytasks />
+      <TaskApp />
       </header>
     </div>
   );
