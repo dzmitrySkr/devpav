@@ -1,107 +1,101 @@
-
-.lists{
-    width: 800px;
-    margin: 10px auto;
+.lists {
+  width: 600px;
+  margin: 10px auto;
 }
 
-.video_item{
-    width: 600px;
-    display: flex;
-    margin-bottom: 30px;
+.video_item {
+  width: 600px;
+  display: flex;
+  margin-bottom: 30px;
 }
 
 .video_item_img {
-    height: 150px;
+  height: 150px;
 }
 
 p {
-    font-size: 10px;
-    text-align: left;
-    margin-left: 30px;
+  font-size: 10px;
+  text-align: left;
+  margin-left: 30px;
 }
 
-.video_item_title{
-    font-size: 18px;
-    font-weight: bold;
+.video_item_title {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.video_item_description{
-    font-size: 12px;
-    color: #fcdeff;
+.video_item_description {
+  font-size: 12px;
+  color: #fcdeff;
 }
 
-
-.video_item_about{display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.video_item_about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.lists_row{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 50px;
+.lists_row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 50px;
 }
-
 
 .row {
-   display:block;
-   width: 350px;
+  display: block;
+  width: 350px;
 }
 
-.row .video_item_img{
-    height: 200px;
+.row .video_item_img {
+  height: 200px;
 }
 
 .search_title {
-    transform: translateY(40vh);
+  transform: translateY(40vh);
 }
 
-.search_title.up{
-    transform: none
+.search_title.up {
+  transform: none;
 }
 
 .search_title p {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 10px;
-   
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .exit {
-    position: absolute;
-    top: 10px;
-    right: 50px;
-    font-size: 15px;
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  font-size: 15px;
 }
 
 .icons {
-   display: flex;
-   justify-content: right;
-   margin-right: 200px;
+  display: flex;
+  justify-content: right;
+  margin-right: 200px;
 }
 
-.icon{
-    margin: 0 10px;
+.icon {
+  margin: 0 10px;
 }
 
 .activ_icon {
-    color: #1890FF
+  color: #1890ff;
 }
 
-header li{
-    display: inline-block;
-    margin: 10px 30px;
-    border-bottom: #1890FF 1px solid;
+header li {
+  display: inline-block;
+  margin: 10px 30px;
+  border-bottom: #1890ff 1px solid;
 }
 
 .heart {
-    color: blue;
-    position: absolute;
-    top:9px;
-    right:550px;
-    z-index: 100;
-  }
-
-
- 
+  color: blue;
+  position: absolute;
+  top: 9px;
+  right: 550px;
+  z-index: 100;
+}

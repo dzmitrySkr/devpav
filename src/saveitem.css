@@ -1,12 +1,18 @@
-.item{
-    width: 200px;
-    height: 50px;
-    background-color: azure;
-    margin: 20px;
-    border-radius: 15px;
+.item {
+  width: 400px;
+  height: 50px;
+  background-color: rgb(3, 104, 104);
+  margin: 20px auto;
+  border-radius: 15px;
+}
+
+.item:nth-child(1) {
+  margin-top: 60px;
 }
 
 .item p {
-    font-size: 16px;
-    color: black;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 50px;
+  color: rgb(255, 255, 255);
 }

@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import { BsList, BsFillGrid3X3GapFill, BsHeart } from "react-icons/bs";
 import React from "react";
 import Modal from "./Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { delsearch } from "./store/action/clickAction";
+import { deltoken } from "./store/action/tokenAction";
+import additem from "./store/action/favoriteAction";
 
 // AIzaSyCNmXdleaGFSBnvkYGgIN7lk4BqJ6EvB0E
 
@@ -15,8 +19,15 @@ function MainPage() {
   let [inputValue, setInputValue] = useState("shark");
   //Записываем массив видео котрые пришли с ютуба, чтобы потом отрендерить
   let [video, setVideo] = useState([]);
+  //стэйт для layout главной страници
+  let [layout, setLayout] = useState(true);
+  //стэйт для показа мадольного окна
+  let [modal, setModal] = useState(true);
+  let { click } = useSelector((state) => state);
+  let dispatch = useDispatch();
+  let { token } = useSelector((state) => state);
 
-  let key = 'AIzaSyAFKXMqYy12uAo1Wh7fWpSWbH_N-ome0kM'
+  let key = "AIzaSyAFKXMqYy12uAo1Wh7fWpSWbH_N-ome0kM";
 
   //Наша асинхронная функция для получения видео
   function serch(searchWarld) {
@@ -30,69 +41,31 @@ function MainPage() {
     localStorage.setItem("searchWarld", searchWarld);
   }
 
-//Эту функцию надо как-то запустить из избранного
-  function serchfromFP(searchWarld, count, sort ) {
+  //Эту функцию надо как-то запустить из избранного
+  function serchfromFP(click) {
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${count}&order=${sort}&q=${searchWarld}&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${click[0].count}&order=${click[0].sort}&q=${click[0].request}&key=${key}`
       )
       .then((res) => {
         setVideo(res.data.items);
-      });
-    localStorage.setItem("searchWarld", searchWarld);
+      })
+      .then(() => dispatch(delsearch()));
   }
-
 
   //Тут мы берем последнее искомое слово из сторидж и выводи видосы
   useEffect(() => {
-    localStorage.getItem("searchWarld") &&
-      serch(localStorage.getItem("searchWarld"));
-      console.log('effect');
-  }, []);
-
-  //функция для переключения сортировки выводимых видео (столбик и строчка)
-  function listRow(toggle) {
-    document
-      .querySelectorAll(".icon")
-      .forEach((n) => n.classList.remove("activ_icon"));
-    if (toggle) {
-      document
-        .querySelectorAll(".video_item")
-        .forEach((n) => n.classList.add("row"));
-      document
-        .querySelectorAll(".lists")
-        .forEach((n) => n.classList.add("lists_row"));
-
-      document.querySelector(".icon_block").classList.add("activ_icon");
+    console.log(token);
+    if (click.length > 0) {
+      serchfromFP(click);
     } else {
-      document
-        .querySelectorAll(".video_item")
-        .forEach((n) => n.classList.remove("row"));
-      document
-        .querySelectorAll(".lists")
-        .forEach((n) => n.classList.remove("lists_row"));
-      document.querySelector(".icon_row").classList.add("activ_icon");
+      localStorage.getItem("searchWarld") &&
+        serch(localStorage.getItem("searchWarld"));
     }
-  }
-
-  //поднимаем или опускаем инпут в зависимости есть ли видео (инпут поцентру экрана)
-  useEffect(() => {
-    video.length > 1
-      ? document.querySelector(".search_title").classList.add("up")
-      : document.querySelector(".search_title").classList.remove("up");
-  });
-
-  //Показываем модульное окно
-    let showmodal = () => {
-      document.querySelector('.modal').classList.toggle('hide')
-    }
-
+  }, []);
 
   return (
     <>
-      {/* "login": "www@mail.ru",
-  "password": "As!#@123123", */}
-
       <header>
         <ul>
           <Link to={"/main"}>
@@ -105,11 +78,13 @@ function MainPage() {
 
         <Link to="/">
           {" "}
-          <div className="exit">Exit</div>
+          <div className="exit" onClick={() => dispatch(deltoken())}>
+            Exit
+          </div>
         </Link>
       </header>
 
-      <div className="search_title up">
+      <div className={video.length >= 1 ? "search_title up" : "search_title "}>
         <p>Поиск Видео</p>
         <Input.Group compact>
           <Input
@@ -117,32 +92,39 @@ function MainPage() {
             // defaultValue="shark"
             onChange={(e) => setInputValue(e.target.value)}
           />
-           <BsHeart className="heart"  onClick={()=>showmodal()} />
+          <BsHeart className="heart" onClick={() => setModal(!modal)} />
           <Button type="primary" onClick={() => serch(inputValue)}>
-            Submit 
+            Submit
           </Button>
-         
         </Input.Group>
       </div>
       <div className="icons">
-        {video.length > 1 && (
-          <div className="icon icon_row " onClick={() => listRow(false)}>
+        {video.length >= 1 && (
+          <div
+            className={layout ? "icon icon_row " : "icon icon_row activ_icon"}
+            onClick={() => setLayout(false)}
+          >
             {" "}
             <BsList />
           </div>
         )}
-        {video.length > 1 && (
+        {video.length >= 1 && (
           <div
-            className="icon icon_block activ_icon"
-            onClick={() => listRow(true)}
+            className={
+              layout ? "icon icon_block activ_icon" : "icon icon_block"
+            }
+            onClick={() => setLayout(true)}
           >
             <BsFillGrid3X3GapFill />
           </div>
         )}
       </div>
-      <div className="lists lists_row">
+
+      <div className={layout ? "lists lists_row" : "lists "}>
         {video.map((item) => (
           <VideoComp
+            key={item.snippet.title}
+            layout={layout}
             title={item.snippet.title}
             imgUrl={item.snippet.thumbnails.high.url}
             description={item.snippet.description}
@@ -150,7 +132,7 @@ function MainPage() {
         ))}
       </div>
 
-    <Modal/>
+      <Modal modal={modal} setModal={setModal} />
     </>
   );
 }

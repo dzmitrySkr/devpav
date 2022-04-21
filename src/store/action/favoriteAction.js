@@ -1,13 +1,10 @@
-let ADD_ITEM = 'ADD_ITEM'
+let ADD_ITEM = "ADD_ITEM";
 
-
-
-function additem( data ){
-
-return {
-    type:ADD_ITEM,
-    payload: data
-}
+function additem(data) {
+  return {
+    type: ADD_ITEM,
+    payload: data,
+  };
 }
 
-export default additem
+export default additem;

@@ -4,18 +4,34 @@ import "antd/dist/antd.css";
 import axios from "axios";
 import "./antd-change.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addtoken } from "./store/action/tokenAction";
+import { useState } from "react";
+import additem from "./store/action/favoriteAction";
 
 function LoginPage() {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
+  let {token} = useSelector(state=>state)
+
   const onFinish = (values) => {
-    console.log("Success:", values);
-
-    navigate("main");
+    axios
+      .post("https://typ-back-end.herokuapp.com/api/login", {
+        login: values.username,
+        password: values.password,
+      })
+      .then((res) => {
+        if (res.data.isAuth) {
+          dispatch(addtoken(res.data.token.split('.')[0]));
+          navigate("main");
+        }})
+      .then(()=>{console.log(token)})
+  
   };
 
-  const onFinishFailed = (errorInfo) => {
+  function onFinishFailed(errorInfo) {
     console.log("Failed:", errorInfo);
-  };
+  }
 
   return (
     <>
@@ -25,7 +41,7 @@ function LoginPage() {
       <Link to={"register"}>
         <button className="enter_button"> Register</button>
       </Link>
-
+      <div>www@mail.ru As!#@123123</div>
       <Form
         name="basic"
         labelCol={{
@@ -44,6 +60,7 @@ function LoginPage() {
         <Form.Item
           label="Username"
           name="username"
+          defaultValue="www@mail.ru"
           rules={[
             {
               required: true,
@@ -57,8 +74,10 @@ function LoginPage() {
         <Form.Item
           label="Password"
           name="password"
+          defaultValue="As!#@123123"
           rules={[
             {
+              
               required: true,
               message: "Please input your password!",
             },

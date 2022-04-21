@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import SaveItem from "./SaveItem";
 import { useSelector } from "react-redux";
-import './saveitem.css'
+import "./saveitem.css";
 
 function FavoritePage() {
+  let {favorite}= useSelector((state) => state);
 
-  let {favorite} = useSelector(state => state)
 
-    return(
-      <>
-        <header>
+  return (
+    <>
+      <header>
         <ul>
           <Link to={"/main"}>
             <li>Поиск</li>
@@ -25,11 +25,12 @@ function FavoritePage() {
       </header>
 
       <div className="saved_pages">
-      {favorite.map((item) => <SaveItem item={item}/>)}
+        {favorite.map((item) => (
+          <SaveItem key={new Date().getTime()} item={item} />
+        ))}
       </div>
-      </>
-    )
-    
+    </>
+  );
 }
 
-export default FavoritePage
+export default FavoritePage;

@@ -1,20 +1,14 @@
+let ADD_ITEM = "ADD_ITEM";
 
-let ADD_ITEM = 'ADD_ITEM'
+let initialStore = [];
 
-let initialStore = []
-
-function favoriteReduser(store = initialStore, action ){
-
-switch (action.type) {
+function favoriteReduser(store = initialStore, action) {
+  switch (action.type) {
     case ADD_ITEM:
-        
-        return [...store, action.payload]
-            
+      return [...store, action.payload];
+  }
+
+  return store;
 }
 
-return store;
-
-}
-
-
-export default favoriteReduser
+export default favoriteReduser;
