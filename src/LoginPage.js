@@ -25,7 +25,7 @@ function LoginPage() {
           dispatch(addtoken(res.data.token.split('.')[0]));
           navigate("main");
         }})
-      .then(()=>{console.log(token)})
+      
   
   };
 

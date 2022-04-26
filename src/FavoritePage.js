@@ -2,9 +2,16 @@ import { Link } from "react-router-dom";
 import SaveItem from "./SaveItem";
 import { useSelector } from "react-redux";
 import "./saveitem.css";
+import { useDispatch } from "react-redux";
+import { dellitem } from "./store/action/favoriteAction";
+
 
 function FavoritePage() {
+  
   let {favorite}= useSelector((state) => state);
+  let dispatch = useDispatch();
+  let { token } = useSelector((state) => state);
+  let favoriteFromLS = JSON.parse(localStorage.getItem(token))
 
 
   return (
@@ -28,7 +35,10 @@ function FavoritePage() {
         {favorite.map((item) => (
           <SaveItem key={new Date().getTime()} item={item} />
         ))}
+
+   
       </div>
+      <button className="clearLocalStor" onClick={()=>{dispatch(dellitem())}}>Удалить из ЛС</button>
     </>
   );
 }

@@ -1,4 +1,5 @@
 let ADD_ITEM = "ADD_ITEM";
+let DELL_ITEM = "DELL_ITEM";
 
 function additem(data) {
   return {
@@ -7,4 +8,11 @@ function additem(data) {
   };
 }
 
-export default additem;
+function dellitem() {
+  return {
+    type: DELL_ITEM,
+  
+  };
+}
+
+export {additem, dellitem};

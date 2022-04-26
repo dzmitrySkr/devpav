@@ -10,11 +10,12 @@ import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { delsearch } from "./store/action/clickAction";
 import { deltoken } from "./store/action/tokenAction";
-import additem from "./store/action/favoriteAction";
-
+import { additem, dellitem } from "./store/action/favoriteAction";
+import { useNavigate } from "react-router";
 // AIzaSyCNmXdleaGFSBnvkYGgIN7lk4BqJ6EvB0E
 
 function MainPage() {
+  let navigate = useNavigate();
   //Контролируем инпут
   let [inputValue, setInputValue] = useState("shark");
   //Записываем массив видео котрые пришли с ютуба, чтобы потом отрендерить
@@ -23,11 +24,13 @@ function MainPage() {
   let [layout, setLayout] = useState(true);
   //стэйт для показа мадольного окна
   let [modal, setModal] = useState(true);
+  //Стор для обекта по которомц мы кликнули в фэйворит. Заносим стдаобьект с данными
   let { click } = useSelector((state) => state);
-  let dispatch = useDispatch();
+  //Стор для токена
   let { token } = useSelector((state) => state);
+  let dispatch = useDispatch();
 
-  let key = "AIzaSyAFKXMqYy12uAo1Wh7fWpSWbH_N-ome0kM";
+  let key = "AIzaSyAFD6fZAkU3lu4joANuTZV5gvFFvLodrw0";
 
   //Наша асинхронная функция для получения видео
   function serch(searchWarld) {
@@ -41,7 +44,8 @@ function MainPage() {
     localStorage.setItem("searchWarld", searchWarld);
   }
 
-  //Эту функцию надо как-то запустить из избранного
+  //Эту функцию вызываем из FAVORITE.JS,
+  // а точнее из  юзэфекта, когда мы кликнцли по ссылке в фэйворит, и перескочили на мэйн
   function serchfromFP(click) {
     axios
       .get(
@@ -53,16 +57,29 @@ function MainPage() {
       .then(() => dispatch(delsearch()));
   }
 
-  //Тут мы берем последнее искомое слово из сторидж и выводи видосы
+  // Тут мы берем последнее искомое слово из сторидж и
+  // выводи видосы. В CLICK мы вкладываем тот обьект
+  // из избранного на который кликнули, и если он у
+  // нас есть то мы загружаем его, если нету, то загружаем
+  // последнее слово из локал сторидж
   useEffect(() => {
-    console.log(token);
     if (click.length > 0) {
       serchfromFP(click);
+      dispatch(delsearch());
     } else {
       localStorage.getItem("searchWarld") &&
         serch(localStorage.getItem("searchWarld"));
     }
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      console.log(token);
+      // localStorage.getItem(token) && dispatch(additem(...JSON.parse(localStorage.getItem(token))));
+    } else {
+      navigate("/");
+    }
+  }, [token]);
 
   return (
     <>
@@ -78,7 +95,12 @@ function MainPage() {
 
         <Link to="/">
           {" "}
-          <div className="exit" onClick={() => dispatch(deltoken())}>
+          <div
+            className="exit"
+            onClick={() => {
+              return dispatch(deltoken()), dispatch(dellitem());
+            }}
+          >
             Exit
           </div>
         </Link>
@@ -137,4 +159,4 @@ function MainPage() {
   );
 }
 
-export default React.memo(MainPage);
+export default MainPage;

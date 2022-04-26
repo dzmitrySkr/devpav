@@ -99,3 +99,17 @@ header li {
   right: 550px;
   z-index: 100;
 }
+
+
+.clearLocalStor{
+  color: rgb(88, 31, 31);
+  background-color: rgb(140, 191, 242);
+  border-radius: 5px;
+  transition: 1s;
+}
+
+
+.clearLocalStor:active{
+  background-color: rgb(38, 86, 86);
+  transition: 1s;
+}
