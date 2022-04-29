@@ -30,7 +30,12 @@ function MainPage() {
   let { token } = useSelector((state) => state);
   let dispatch = useDispatch();
 
-  let key = "AIzaSyAFD6fZAkU3lu4joANuTZV5gvFFvLodrw0";
+  let key = "AIzaSyDXlWxj9kZoR7yLSG73YXwt0iZp9vNS8ZE";
+
+  /*
+  Тут меням ключ
+  https://console.cloud.google.com/apis/dashboard?project=my-project-1771-347506
+  */
 
   //Наша асинхронная функция для получения видео
   function serch(searchWarld) {
@@ -47,6 +52,7 @@ function MainPage() {
         }
       });
     localStorage.setItem("searchWarld", searchWarld);
+    setInputValue("");
   }
 
   //Эту функцию вызываем из FAVORITE.JS,
@@ -59,7 +65,13 @@ function MainPage() {
       .then((res) => {
         setVideo(res.data.items);
       })
-      .then(() => dispatch(delsearch()));
+      .then(() => dispatch(delsearch()))
+      .catch((e) => {
+        if (e.request.status === 403) {
+          console.log("Поменяйй ключ");
+        }
+      });
+    setInputValue("");
   }
 
   // Тут мы берем последнее искомое слово из сторидж и
@@ -76,15 +88,6 @@ function MainPage() {
         serch(localStorage.getItem("searchWarld"));
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (token) {
-  //     console.log(token);
-  //     // localStorage.getItem(token) && dispatch(additem(...JSON.parse(localStorage.getItem(token))));
-  //   } else {
-  //     navigate("/");
-  //   }
-  // }, [token]);
 
   return (
     <>
@@ -118,9 +121,11 @@ function MainPage() {
         <p>Поиск Видео</p>
         <Input.Group compact>
           <Input
+            value={inputValue}
             style={{ width: "calc(100% - 1000px)" }}
             // defaultValue="shark"
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(event) => event.key === "Enter" && serch(inputValue)}
           />
           <BsHeart className="heart" onClick={() => setModal(!modal)} />
           <Button type="primary" onClick={() => serch(inputValue)}>

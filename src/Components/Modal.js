@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../Styles/modal.css";
 import { useDispatch, useSelector } from "react-redux";
-import {additem} from "../store/action/favoriteAction";
+import { additem } from "../store/action/favoriteAction";
 
 function Modal({ modal, setModal }) {
   //контролируемые параметры нашего инпута
@@ -19,14 +19,16 @@ function Modal({ modal, setModal }) {
       dispatch(
         additem({ request: request, name: name, sort: sort, count: count })
       );
+
+      //Закрываем модальное окно, очищаем строчки
       setModal(!modal);
-     
+      setRequest("");
+      setName("");
     }
-    if(token){
-       localStorage.setItem(token, JSON.stringify(favorite));
+    if (token) {
+      localStorage.setItem(token, JSON.stringify(favorite));
     }
   };
-
 
   return (
     <div className={modal ? "modal hide" : "modal"}>

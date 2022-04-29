@@ -6,7 +6,7 @@ const ProtectedRouteLogin = ({ children }) => {
   if (localstore) {
     return <Navigate replace to="main" />;
   }
-  return <Outlet/>;
+  return <Outlet />;
 };
 
 export default ProtectedRouteLogin;
