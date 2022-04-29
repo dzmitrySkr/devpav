@@ -77,14 +77,14 @@ function MainPage() {
     }
   }, []);
 
-  useEffect(() => {
-    if (token) {
-      console.log(token);
-      // localStorage.getItem(token) && dispatch(additem(...JSON.parse(localStorage.getItem(token))));
-    } else {
-      navigate("/");
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     console.log(token);
+  //     // localStorage.getItem(token) && dispatch(additem(...JSON.parse(localStorage.getItem(token))));
+  //   } else {
+  //     navigate("/");
+  //   }
+  // }, [token]);
 
   return (
     <>

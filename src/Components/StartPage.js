@@ -14,14 +14,9 @@ function StartPage() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRouteLogin>
-                <LoginPage />
-              </ProtectedRouteLogin>
-            }
-          />
+          <Route element={<ProtectedRouteLogin />}>
+            <Route path="/" element={<LoginPage />} />
+          </Route>
 
           <Route element={<ProtectedRouteMain />}>
             <Route path="register" element={<RegisterPage />} />
