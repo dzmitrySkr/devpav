@@ -1,4 +1,4 @@
-import "./video.css";
+import "../Styles/video.css";
 
 function VideoComp({ title, imgUrl, description, layout }) {
   return (

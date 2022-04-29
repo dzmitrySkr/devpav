@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./modal.css";
+import "../Styles/modal.css";
 import { useDispatch, useSelector } from "react-redux";
-import {additem} from "./store/action/favoriteAction";
+import {additem} from "../store/action/favoriteAction";
 
 function Modal({ modal, setModal }) {
   //контролируемые параметры нашего инпута

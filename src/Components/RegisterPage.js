@@ -1,6 +1,6 @@
 import "antd/dist/antd.css";
 import { Link} from "react-router-dom";
-import "./antd-change.css";
+import "../Styles/antd-change.css";
 import { React, } from "react";
 import {Form, Input, Select, Button,} from "antd";
 

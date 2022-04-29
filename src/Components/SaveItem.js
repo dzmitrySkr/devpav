@@ -1,7 +1,7 @@
-import "./saveitem.css";
+import "../Styles/saveitem.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { addsearch } from "./store/action/clickAction";
+import { addsearch } from "../store/action/clickAction";
 import { useNavigate } from "react-router";
 
 function SaveItem({ item }) {

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import SaveItem from "./SaveItem";
 import { useSelector } from "react-redux";
-import "./saveitem.css";
+import "../Styles/saveitem.css";
 import { useDispatch } from "react-redux";
-import { dellitem } from "./store/action/favoriteAction";
+import { dellitem } from "../store/action/favoriteAction";
 
 
 function FavoritePage() {

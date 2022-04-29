@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import StartPage from './StartPage.js';
+import StartPage from './Components/StartPage';
 
 
 function App() {
