@@ -40,6 +40,11 @@ function MainPage() {
       )
       .then((res) => {
         setVideo(res.data.items);
+      })
+      .catch((e) => {
+        if (e.request.status === 403) {
+          console.log("Поменяйй ключ");
+        }
       });
     localStorage.setItem("searchWarld", searchWarld);
   }
@@ -98,7 +103,10 @@ function MainPage() {
           <div
             className="exit"
             onClick={() => {
-              return dispatch(deltoken()), dispatch(dellitem(), localStorage.removeItem('token'));
+              return (
+                dispatch(deltoken()),
+                dispatch(dellitem(), localStorage.removeItem("token"))
+              );
             }}
           >
             Exit
