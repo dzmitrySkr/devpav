@@ -4,6 +4,13 @@
   background-color: rgb(3, 104, 104);
   margin: 20px auto;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item>div{
+  padding: 15px;
 }
 
 .item:nth-child(1) {
@@ -15,4 +22,26 @@
   font-weight: 500;
   line-height: 50px;
   color: rgb(255, 255, 255);
+}
+
+.flex_wrapper{
+display: flex;
+}
+
+.flex_wrapper>div{
+   margin: 5px;
+}
+
+
+.item_button{
+    color: #520000;
+    font-size: 22px;
+    justify-content: right;
+    transition: 0.3s;
+}
+
+.item_button:hover{
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
 }

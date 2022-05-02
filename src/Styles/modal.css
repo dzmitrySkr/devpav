@@ -1,6 +1,6 @@
 .modal {
   width: 500px;
-  height: 500px;
+  height: auto;
   background-color: rgb(16, 29, 29);
   position: absolute;
   top: 100px;
@@ -20,4 +20,8 @@
 
 .hide {
   display: none;
+}
+
+.save{
+  margin-bottom: 20px;
 }

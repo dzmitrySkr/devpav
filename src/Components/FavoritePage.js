@@ -4,15 +4,15 @@ import { useSelector } from "react-redux";
 import "../Styles/saveitem.css";
 import { useDispatch } from "react-redux";
 import { dellitem } from "../store/action/favoriteAction";
+import { useEffect, useState } from "react";
 
 
 function FavoritePage() {
   
-  let {favorite}= useSelector((state) => state);
-  let dispatch = useDispatch();
-  let { token } = useSelector((state) => state);
+  let token = localStorage.getItem("token")
   let favoriteFromLS = JSON.parse(localStorage.getItem(token))
-
+  let [favorite, setFavorite] = useState(favoriteFromLS) 
+  console.log(favorite);
 
   return (
     <>
@@ -32,13 +32,13 @@ function FavoritePage() {
       </header>
 
       <div className="saved_pages">
-        {favorite.map((item) => (
-          <SaveItem key={new Date().getTime()} item={item} />
+        {Array.isArray(favorite) && favorite.map((item) => (
+          <SaveItem key={new Date().getTime()} item={item} setFavorite={setFavorite} />
         ))}
-
    
       </div>
-      <button className="clearLocalStor" onClick={()=>{dispatch(dellitem())}}>Удалить из ЛС</button>
+      <button className="clearLocalStor" onClick={()=>{localStorage.setItem(token, JSON.stringify([]))}}>Удалить из ЛС</button>
+
     </>
   );
 }
