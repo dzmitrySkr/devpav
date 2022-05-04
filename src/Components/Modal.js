@@ -6,14 +6,11 @@ import { additem } from "../store/action/favoriteAction";
 function Modal({ modal, setModal, editObj }) {
   //контролируемые параметры нашего инпута
 
-
-    let [request, setRequest] = useState('');
-    let [name, setName] = useState("");
-    let [sort, setSort] = useState("date");
-    let [count, setCount] = useState(12);
-    let token = localStorage.getItem("token");
-
-    console.log(name);
+  let [request, setRequest] = useState("");
+  let [name, setName] = useState("");
+  let [sort, setSort] = useState("date");
+  let [count, setCount] = useState(12);
+  let token = localStorage.getItem("token");
 
   //При сохронении заносим в LS, потом этот стор будем заносить в ЛС
   let savemodal = () => {
