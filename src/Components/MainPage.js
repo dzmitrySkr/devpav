@@ -10,7 +10,6 @@ import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { delsearch } from "../store/action/clickAction";
 import { deltoken } from "../store/action/tokenAction";
-import { additem, dellitem } from "../store/action/favoriteAction";
 import { useNavigate } from "react-router";
 // AIzaSyCNmXdleaGFSBnvkYGgIN7lk4BqJ6EvB0E
 
@@ -106,10 +105,7 @@ function MainPage() {
           <div
             className="exit"
             onClick={() => {
-              return (
-                dispatch(deltoken()),
-                dispatch(dellitem(), localStorage.removeItem("token"))
-              );
+              return dispatch(deltoken()), localStorage.removeItem("token");
             }}
           >
             Exit

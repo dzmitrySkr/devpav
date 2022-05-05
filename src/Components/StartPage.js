@@ -16,10 +16,10 @@ function StartPage() {
         <Routes>
           <Route element={<ProtectedRouteLogin />}>
             <Route path="/" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
           </Route>
 
           <Route element={<ProtectedRouteMain />}>
-            <Route path="register" element={<RegisterPage />} />
             <Route path="main" element={<MainPage />} />
             <Route path="saved" element={<FavoritePage />} />
           </Route>

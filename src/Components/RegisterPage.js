@@ -1,8 +1,8 @@
 import "antd/dist/antd.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Styles/antd-change.css";
-import { React, } from "react";
-import {Form, Input, Select, Button,} from "antd";
+import { React } from "react";
+import { Form, Input, Select, Button } from "antd";
 
 function RegisterPage() {
   const { Option } = Select;

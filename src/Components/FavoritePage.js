@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import SaveItem from "./SaveItem";
-import { useSelector } from "react-redux";
 import "../Styles/saveitem.css";
-import { useDispatch } from "react-redux";
-import { dellitem } from "../store/action/favoriteAction";
 import { useEffect, useState } from "react";
 
 function FavoritePage() {
+  //Берем наш токен из LS
   let token = localStorage.getItem("token");
   let [favorite, setFavorite] = useState([]);
 
-
+  //Если такой токен есть то записываем его в переменную и далее парсим его. В нем лежат наши сохраненные поиски
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem(token));
     if (items) {
@@ -18,12 +16,10 @@ function FavoritePage() {
     }
   }, []);
 
+ //При изменении нашей переменной мы заносим в LS новые данные
   useEffect(() => {
     localStorage.setItem(token, JSON.stringify(favorite));
   }, [favorite]);
-
-
-
 
   return (
     <>
@@ -43,14 +39,14 @@ function FavoritePage() {
       </header>
 
       <div className="saved_pages">
+        {/*ПРоверяем на массив в переменной, и парсим его*/}
         {Array.isArray(favorite) &&
-          favorite.map((item) => (
+          favorite.map((item, index) => (
             <SaveItem
-              key={new Date().getTime()}
+              key={index}
               item={item}
               setFavorite={setFavorite}
               favorite={favorite}
-     
             />
           ))}
       </div>
