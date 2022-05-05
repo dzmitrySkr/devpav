@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.19.5",
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "icomoon-react": "^2.0.19",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

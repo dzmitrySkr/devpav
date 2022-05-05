@@ -1,7 +1,7 @@
 let ADD_ITEM = "ADD_ITEM";
 
 
-function additem(data) {
+function addItem(data) {
   return {
     type: ADD_ITEM,
     payload: data,
@@ -10,4 +10,4 @@ function additem(data) {
 
 
 
-export {additem};
+export {addItem};

@@ -8,13 +8,13 @@ import { BsList, BsFillGrid3X3GapFill, BsHeart } from "react-icons/bs";
 import React from "react";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { delsearch } from "../store/action/clickAction";
-import { deltoken } from "../store/action/tokenAction";
-import { useNavigate } from "react-router";
+import { delSearch } from "../store/action/clickAction";
+import { delToken } from "../store/action/tokenAction";
+
 // AIzaSyCNmXdleaGFSBnvkYGgIN7lk4BqJ6EvB0E
+// require('dotenv').config()
 
 function MainPage() {
-  let navigate = useNavigate();
   //Контролируем инпут
   let [inputValue, setInputValue] = useState("shark");
   //Записываем массив видео котрые пришли с ютуба, чтобы потом отрендерить
@@ -26,10 +26,7 @@ function MainPage() {
   //Стор для обекта по которомц мы кликнули в фэйворит. Заносим стдаобьект с данными
   let { click } = useSelector((state) => state);
   //Стор для токена
-  let { token } = useSelector((state) => state);
   let dispatch = useDispatch();
-
-  let key = "AIzaSyDXlWxj9kZoR7yLSG73YXwt0iZp9vNS8ZE";
 
   /*
   Тут меням ключ
@@ -40,7 +37,7 @@ function MainPage() {
   function serch(searchWarld) {
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${searchWarld}&key=${key}`
+        `${process.env.REACT_APP_YOUTUBE_HTTP}&maxResults=12&q=${searchWarld}&key=${process.env.REACT_APP_YOUTUBE_KEY}`
       )
       .then((res) => {
         setVideo(res.data.items);
@@ -59,12 +56,12 @@ function MainPage() {
   function serchfromFP(click) {
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${click[0].count}&order=${click[0].sort}&q=${click[0].request}&key=${key}`
+        `${process.env.REACT_APP_YOUTUBE_HTTP}&maxResults=${click[0].count}&order=${click[0].sort}&q=${click[0].request}&key=${process.env.REACT_APP_YOUTUBE_KEY}`
       )
       .then((res) => {
         setVideo(res.data.items);
       })
-      .then(() => dispatch(delsearch()))
+      .then(() => dispatch(delSearch()))
       .catch((e) => {
         if (e.request.status === 403) {
           console.log("Поменяйй ключ");
@@ -81,7 +78,7 @@ function MainPage() {
   useEffect(() => {
     if (click.length > 0) {
       serchfromFP(click);
-      dispatch(delsearch());
+      dispatch(delSearch());
     } else {
       localStorage.getItem("searchWarld") &&
         serch(localStorage.getItem("searchWarld"));
@@ -105,7 +102,7 @@ function MainPage() {
           <div
             className="exit"
             onClick={() => {
-              return dispatch(deltoken()), localStorage.removeItem("token");
+              return dispatch(delToken()), localStorage.removeItem("token");
             }}
           >
             Exit

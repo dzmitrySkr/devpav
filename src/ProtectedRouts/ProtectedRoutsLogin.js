@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom";
 
-const ProtectedRouteLogin = ({ children }) => {
+const ProtectedRouteLogin = () => {
   let localstore = localStorage.getItem("token");
 
   if (localstore) {

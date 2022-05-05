@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../Styles/modal.css";
 import { useDispatch, useSelector } from "react-redux";
-import { additem } from "../store/action/editAction";
+import { addItem } from "../store/action/editAction";
 
 function Modal({ modal, setModal, setFavorite }) {
   //контролируемые параметры нашего инпута
@@ -23,7 +23,7 @@ function Modal({ modal, setModal, setFavorite }) {
   }, [modal]);
 
   //При сохронении заносим в LS
-  let savemodal = () => {
+  let saveModal = () => {
     //Если у нас в модалку передался обьект то значит мы в модалку зашли для редактирования,
     //а значит при сохранении нам надо заменить имеющийся обьект. Меняем мы его так: В LS ищем  обьект
     // который мы сохранили в редакс, и меняем его на тот который у нас записан в модалке.
@@ -61,18 +61,18 @@ function Modal({ modal, setModal, setFavorite }) {
     setRequest("");
     setName("");
     //очищаем наш стор, для того чтобы когда мы в модалку зашли со стороны сохранения (не редактирования), в инпутах у нас было пусто
-    dispatch(additem(""));
+    dispatch(addItem(""));
 
     //Синхронизируем наш LS с нашей переменной которую мы парсим для показа сохраненных поисков
     setFavorite(JSON.parse(localStorage.getItem(token)));
   };
 
-  let closemodal = () => {
+  let closeModal = () => {
     //При зкрытии окна закрываем модалку очищаем инпуты, удаляем обьект редактирования
     setModal(!modal);
     setRequest("");
     setName("");
-    dispatch(additem(""));
+    dispatch(addItem(""));
   };
 
   return (
@@ -130,13 +130,13 @@ function Modal({ modal, setModal, setFavorite }) {
       <div>
         <button
           onClick={() => {
-            return closemodal(), dispatch(additem(""));
+            return closeModal(), dispatch(addItem(""));
           }}
           className="not_save"
         >
           Не сохранять
         </button>
-        <button className="save" onClick={() => savemodal()}>
+        <button className="save" onClick={() => saveModal()}>
           Сохранить
         </button>
       </div>

@@ -1,17 +1,17 @@
 let DEL_SEARCH = "DEL_SEARCH";
 let ADD_SEARCH = "ADD_SEARCH";
 
-function addsearch(item) {
+function addSearch(item) {
   return {
     type: ADD_SEARCH,
     payload: item,
   };
 }
 
-function delsearch() {
+function delSearch() {
   return {
     type: DEL_SEARCH,
   };
 }
 
-export { addsearch, delsearch };
+export { addSearch, delSearch };

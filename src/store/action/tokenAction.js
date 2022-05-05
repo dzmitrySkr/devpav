@@ -1,17 +1,17 @@
 let DEL_TOKEN = "DEL_TOKEN";
 let ADD_TOKEN = "ADD_TOKEN";
 
-function addtoken(item) { 
+function addToken(item) { 
   return {
     type: ADD_TOKEN,
     payload: item,
   };
 }
 
-function deltoken() {
+function delToken() {
   return {
     type: DEL_TOKEN,
   };
 }
 
-export { addtoken, deltoken };
+export { addToken, delToken };

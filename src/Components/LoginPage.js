@@ -4,8 +4,8 @@ import "antd/dist/antd.css";
 import axios from "axios";
 import "../Styles/antd-change.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addtoken } from "../store/action/tokenAction";
+import { useDispatch } from "react-redux";
+import { addToken } from "../store/action/tokenAction";
 
 
 function LoginPage() {
@@ -21,7 +21,7 @@ function LoginPage() {
       })
       .then((res) => {
         if (res.data.isAuth) {
-          dispatch(addtoken(res.data.token.split('.')[0]));
+          dispatch(addToken(res.data.token.split('.')[0]));
           navigate("main");
           localStorage.setItem('token', res.data.token.split('.')[0])
         }})
