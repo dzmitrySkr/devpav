@@ -1,16 +1,43 @@
 .modal {
-  width: 500px;
+  width: 375px;
   height: auto;
   background-color: rgb(16, 29, 29);
   position: absolute;
   top: 100px;
   left: 40%;
   color: black;
-  border: 2px solid black;
+  border: 2px solid #b0baff;
   border-radius: 5px;
   z-index: 101;
 }
-.modal p,
+.modal .modal_title p{
+  color: antiquewhite;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 0 0 0;
+  text-decoration: underline;
+}
+
+.modal p{
+  color: antiquewhite;
+  font-size: 13px;
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+
+.modal input{
+    background-color: #d7e4fa;
+    border-radius: 5px;
+    height: 35px;
+}
+
+.modal input:focus{
+  background-color: #ffffff;
+}
+
+
+
+
 .modal span {
   color: antiquewhite;
   font-size: 18px;
@@ -22,6 +49,10 @@
   display: none;
 }
 
-.save{
-  margin-bottom: 20px;
+.save, .not_save{
+  font-weight: 600;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  font-size: 13px;
 }
