@@ -4,6 +4,7 @@ import Modal from "./Modal";
 
 import { BsList, BsFillGrid3X3GapFill } from "react-icons/bs";
 import "../Styles/mainpage.css";
+import Icons from "./Icons";
 
 function Favorites() {
   let [layout, setLayout] = useState(false);
@@ -11,7 +12,7 @@ function Favorites() {
   let [modal, setModal] = useState(false);
   let [textbook, setTextbook] = useState(null);
 
-  //Take books from localStore (if have), and sace in state, next render
+  //Take books from localStore (if have), and sace in state, next
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("MyBooks"));
     if (items) {
@@ -22,20 +23,8 @@ function Favorites() {
   return (
     <>
       <>
-        <div className="icons">
-          <div
-            className={layout ? "icon icon_col icon_active" : "icon icon_col"}
-            onClick={() => setLayout(true)}
-          >
-            <BsList />
-          </div>
-          <div
-            className={layout ? "icon icon_row" : "icon icon_row icon_active"}
-            onClick={() => setLayout(false)}
-          >
-            <BsFillGrid3X3GapFill />
-          </div>
-        </div>
+        <Icons setLayout={setLayout} layout={layout} />
+
         <div className={layout ? "books_col" : "books_row"}>
           {Array.isArray(favorite) &&
             favorite.map((item) => (

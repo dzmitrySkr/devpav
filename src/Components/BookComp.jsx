@@ -32,7 +32,6 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
     setModal(!modal);
   };
 
-
   //render window and disable buttons if have same book in LocalStore
   useEffect(() => {
     localStorage.getItem("MyBooks") &&

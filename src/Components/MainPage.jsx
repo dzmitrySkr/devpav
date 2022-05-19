@@ -14,7 +14,7 @@ function MainPage() {
         <div className="links">
           <Link to="/">
             <h2
-              className={active ? "active_link" : ""}
+              className={active ? "active_link" : "link"}
               onClick={() => setActive(true)}
             >
               {" "}
@@ -23,7 +23,7 @@ function MainPage() {
           </Link>
           <Link to="favorites">
             <h2
-              className={active ? "" : "active_link"}
+              className={active ? "link" : "active_link"}
               onClick={() => setActive(false)}
             >
               Favorites
