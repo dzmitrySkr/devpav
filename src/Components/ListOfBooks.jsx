@@ -14,6 +14,8 @@ function ListOfBooks() {
   let [search, setSearch] = useState("");
   let [textbook, setTextbook] = useState(null);
   let [modal, setModal] = useState(false);
+
+  //calling func in didMount
   useEffect(() => serch(), []);
 
   function serch() {
@@ -24,6 +26,7 @@ function ListOfBooks() {
     });
   }
 
+  // func for searching worlds in input
   function inputSearch(search) {
     if (search) {
       search.split(" ").join("+");

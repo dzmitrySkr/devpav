@@ -11,6 +11,7 @@ function Favorites() {
   let [modal, setModal] = useState(false);
   let [textbook, setTextbook] = useState(null);
 
+  //Take books from localStore (if have), and sace in state, next render
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("MyBooks"));
     if (items) {

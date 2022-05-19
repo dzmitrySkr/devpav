@@ -5,6 +5,7 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
   let [count, setCount] = useState(0);
   let [disable, setDisabled] = useState(false);
 
+  //remember favorite books in localstore
   let setToFavorite = (item) => {
     if (localStorage.getItem("MyBooks")) {
       localStorage.setItem(
@@ -17,6 +18,7 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
     setCount(count + 1);
   };
 
+  //delete books from Localstore
   let delFromLS = (item) => {
     let ls = JSON.parse(localStorage.getItem("MyBooks"));
     let newls = ls.filter((i) => i.id !== item.id);
@@ -24,11 +26,14 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
     setFavorite(newls);
   };
 
+  // function for open modal window and get info to the modal (setText)
   let read = (item) => {
     setTextbook(item);
     setModal(!modal);
   };
 
+
+  //render window and disable buttons if have same book in LocalStore
   useEffect(() => {
     localStorage.getItem("MyBooks") &&
       JSON.parse(localStorage.getItem("MyBooks")).forEach((i) => {
@@ -38,9 +43,9 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
 
   return (
     <>
-      <div className="book" onClick={() => read(item)}>
+      <div className="book">
         <p className="item_title">{item.title}</p>
-        <div>
+        <div onClick={() => read(item)}>
           <img
             src={
               item.resources.find((item) => {

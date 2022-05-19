@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Favorites from "./Favorites";
 
 function MainPage() {
+  //State for making active h2
   let [active, setActive] = useState(true);
 
   return (

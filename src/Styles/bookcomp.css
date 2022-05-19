@@ -2,7 +2,8 @@
   width: 251px;
   margin: 0 auto;
   margin-bottom: 40px;
-  box-shadow: 0 0 24px -13px #000207;
+  border: 6px solid #2c2c52;
+  box-shadow: 0 -15px 15px rgb(255 255 255 / 5%), inset 0 -15px 15px rgb(255 255 255 / 5%), 0 15px 15px rgb(0 0 0 / 60%), inset 0 15px 15px rgb(0 0 0 / 30%);
   border-radius: 10px;
   transition: 0.3s;
   display: flex;
@@ -17,8 +18,7 @@
 }
 
 .book:hover {
-  box-shadow: 0 0 45px -13px #000000;
-  transition: 0.3s;
+  box-shadow: 0 -15px 15px rgb(192 140 187 / 14%), inset 0 46px 156px rgb(255 255 255 / 0%), 0 15px 15px rgb(0 0 0), inset 0 15px 15px rgb(0 0 0 / 35%);  transition: 0.3s;
 }
 
 button {
