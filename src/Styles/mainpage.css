@@ -1,0 +1,71 @@
+h2 {
+  margin: 0;
+  padding: 20px;
+  color: rgb(63, 85, 105);
+  font-size: 30px;
+  letter-spacing: 4px;
+  transition: 0.3s;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2:hover {
+  color: rgb(125, 152, 179);
+  transition: 0.3s;
+}
+
+.icons {
+  display: flex;
+  justify-content: end;
+  padding-right: 15%;
+}
+.icon {
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.icon_active {
+  color: antiquewhite;
+}
+
+.books_col {
+}
+
+.books_row {
+  display: flex;
+  width: 90%;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+}
+
+h2.active_link {
+  color: aliceblue;
+}
+
+.wrapper_head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search_book {
+  margin-left: 15%;
+}
+
+footer{
+    padding: 30px;
+    font-size: 10px;
+    color: aliceblue;
+}
+
+footer a{
+    color: rgb(111, 241, 215);
+}
