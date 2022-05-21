@@ -18,35 +18,38 @@ function ListOfBooks() {
   let URL = "https://gnikdroy.pythonanywhere.com/api/book/";
 
   //calling func in didMount
-  useEffect(() => serch(), []);
-
-  function serch() {
-    axios.get(`${URL}`).then((res) => {
-      setBooks(res.data.results);
-      setNext(res.data.next);
-      setPrev(res.data.previous);
-    });
-  }
+  useEffect(() => {
+    const serch = async () => {
+      let response = await fetch(`${URL}`);
+      let searchbooks = await response.json();
+      setBooks(searchbooks.results);
+      setNext(searchbooks.next);
+      setPrev(searchbooks.previous);
+    };
+    serch().catch(console.error);
+  }, []);
 
   // func for searching worlds in input
-  function inputSearch(search) {
+  async function inputSearch(search) {
     if (search) {
       search.split(" ").join("+");
-      axios.get(`${URL}?search=${search.split(" ").join("+")}`).then((res) => {
-        setBooks(res.data.results);
-        setNext(res.data.next);
-        setPrev(res.data.previous);
-        setSearch("");
-      });
+      let response = await fetch(
+        `${URL}?search=${search.split(" ").join("+")}`
+      );
+      let searchbooks = await response.json();
+      setBooks(searchbooks.results);
+      setNext(searchbooks.next);
+      setPrev(searchbooks.previous);
+      setSearch("");
     }
   }
 
-  function editPage(page) {
-    axios.get(page).then((res) => {
-      setBooks(res.data.results);
-      setNext(res.data.next);
-      setPrev(res.data.previous);
-    });
+  async function editPage(page) {
+    let response = await fetch(page);
+    let newpage = await response.json();
+    setBooks(newpage.results);
+    setNext(newpage.next);
+    setPrev(newpage.previous);
   }
 
   return (
