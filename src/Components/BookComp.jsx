@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../Styles/bookcomp.css";
 
 function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
-  let [count, setCount] = useState(0);
+ 
   let [disable, setDisabled] = useState(false);
 
   //remember favorite books in localstore
@@ -15,7 +15,8 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
     } else {
       localStorage.setItem("MyBooks", JSON.stringify([item]));
     }
-    setCount(count + 1);
+    setDisabled(!disable)
+
   };
 
   //delete books from Localstore
@@ -38,7 +39,7 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
       JSON.parse(localStorage.getItem("MyBooks")).forEach((i) => {
         i.id === item.id && setDisabled(true);
       });
-  }, [count]);
+  }, []);
 
   return (
     <>
@@ -46,12 +47,16 @@ function BookComp({ item, come, setFavorite, setTextbook, modal, setModal }) {
         <p className="item_title">{item.title}</p>
         <div onClick={() => read(item)}>
           <img
-            src={
+            src={ 
               item.resources.find((item) => {
                 if (item.uri.includes("medium")) {
                   return item.uri;
-                }
-              }).uri
+                } 
+              }) ?item.resources.find((item) => {
+                if (item.uri.includes("medium")) {
+                  return item.uri;
+                } 
+              }).uri : `https://raru.co.za/img/no-cover.png`
             }
             alt={item.title}
           />
