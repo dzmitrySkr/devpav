@@ -1,0 +1,52 @@
+.flexwrapper {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 18%;
+  background-color: rgb(47, 90, 120);
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.infobar {
+  width: 82%;
+  background-color: rgb(229, 255, 246);
+}
+
+ul {
+  list-style-type: none;
+  width: 200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+li {
+  margin-top: 30px;
+  color: rgb(235, 246, 255);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  letter-spacing: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.1s ease;
+}
+
+li:hover::before {
+  width: 100%;
+  transition: 0.1s ease;
+  left: 0;
+}
+
+

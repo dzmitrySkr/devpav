@@ -1,0 +1,55 @@
+.line {
+  display: flex;
+  border-bottom: 1px solid rgb(154, 176, 236);
+  margin: 20px;
+  justify-content: space-around;
+  position: relative;
+}
+
+.line_item {
+  flex: 1 1 12%;
+  margin: 15px;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.action,
+.change {
+  cursor: pointer;
+  color: blue;
+}
+
+.title_line {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.title_line .action {
+  color: black;
+}
+
+.unicode {
+  display: inline-block;
+  position: relative;
+  transform: rotate(360deg);
+  transition: 0.2s;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.unicode_off {
+  transform: rotate(180deg);
+  color: rgb(255 75 82);
+  transition: 0.2s;
+}
+
+.start_date {
+  position: relative;
+  overflow: visible;
+}
+
+.start {
+  position: absolute;
+  right: -12px;
+}

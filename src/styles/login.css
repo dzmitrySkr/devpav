@@ -1,0 +1,29 @@
+h2{
+    color: #dedbff;;
+}
+
+.ant-btn-primary{
+    margin-top: 20px;
+    width: 200px;
+}
+.ant-form-item {
+    width:270px;
+}
+
+#basic label{
+    color: aliceblue;
+    font-weight: 500;
+}
+
+.login_error{
+    color: red;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    transition: 0.3s;    
+}
+
+.none{
+    opacity: 0;
+    transition: 0.3s;
+}
