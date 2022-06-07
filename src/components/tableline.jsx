@@ -5,21 +5,28 @@ import ModalChangeUser from "./modalChangeUser";
 
 function TableLine({ item, setShadow }) {
   let URL = "https://typ-back.herokuapp.com/api/socialNetworks/";
-  let URL2 = "https://typ-back.herokuapp.com/api/modules/";
+  let URL2 = "https://typ-back.herokuapp.com/api/usersModules/";
+  let URL3 = "https://typ-back.herokuapp.com/api/modules/";
 
   let [instaFromBack, setInstaFromBack] = useState("");
   let [telegaFromBack, setTelegaFromBack] = useState("");
   let [toggleModalChUser, setToggleModalChUser] = useState(false);
+  let [module, setModule] = useState('')
 
-  // useEffect(() => {
-  //   const serch = async () => {
-  //     let response = await fetch(`${URL2}${id}`);
-  //     let searchnodules = await response.json();
-  //     console.log(searchnodules);
-  //   };
-  //   serch().catch(console.error);
-  // }, []);
-
+// add modules 
+  useEffect(() => {
+    const serch = async () => {
+      let response = await fetch(`${URL2}${item.id}`);
+      let searchnodules = await response.json();
+     
+      let response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
+      let searchnodules2 = await response2.json()
+      setModule(searchnodules2.title);
+    };
+    serch().catch(console.error);
+  }, []);
+  
+//add telegram and instagram
   useEffect(() => {
     const serch = async () => {
       let response = await fetch(`${URL}${item.id}`);
@@ -52,7 +59,7 @@ function TableLine({ item, setShadow }) {
           {instaFromBack || item.instagram}
         </div>
         <div className="login line_item">{item.login}</div>
-        <div className="modul_name line_item"></div>
+        <div className="modul_name line_item">{module}</div>
         <div className="start_date line_item">
           {item.createdAt &&
             item.createdAt.split("T")[0].split("-").reverse().join("-")}
