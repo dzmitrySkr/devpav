@@ -11,22 +11,24 @@ function TableLine({ item, setShadow }) {
   let [instaFromBack, setInstaFromBack] = useState("");
   let [telegaFromBack, setTelegaFromBack] = useState("");
   let [toggleModalChUser, setToggleModalChUser] = useState(false);
-  let [module, setModule] = useState('')
+  let [modul, setModul] = useState("");
 
-// add modules 
+  // add modules
   useEffect(() => {
     const serch = async () => {
       let response = await fetch(`${URL2}${item.id}`);
       let searchnodules = await response.json();
+  
      
-      let response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
-      let searchnodules2 = await response2.json()
-      setModule(searchnodules2.title);
+        let response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
+        let searchnodules2 = await response2.json();
+        setModul(searchnodules2.title);
+      
     };
     serch().catch(console.error);
   }, []);
-  
-//add telegram and instagram
+
+  //add telegram and instagram
   useEffect(() => {
     const serch = async () => {
       let response = await fetch(`${URL}${item.id}`);
@@ -59,15 +61,17 @@ function TableLine({ item, setShadow }) {
           {instaFromBack || item.instagram}
         </div>
         <div className="login line_item">{item.login}</div>
-        <div className="modul_name line_item">{module}</div>
+        <div className="modul_name line_item">{modul || item.modul}</div>
         <div className="start_date line_item">
-          {item.createdAt &&
-            item.createdAt.split("T")[0].split("-").reverse().join("-")}
+          {item.updatedAt &&
+            item.updatedAt.split("T")[0].split("-").reverse().join("-")}
         </div>
         <div className="action line_item">Пригласить</div>
         <div
           className="change line_item"
-          onClick={()=>{return setToggleModalChUser(!toggleModalChUser), setShadow(true)}}
+          onClick={() => {
+            return setToggleModalChUser(!toggleModalChUser), setShadow(true);
+          }}
         >
           Изменить
         </div>
@@ -76,7 +80,7 @@ function TableLine({ item, setShadow }) {
       <ModalChangeUser
         toggleModalChUser={toggleModalChUser}
         setToggleModalChUser={setToggleModalChUser}
-        item = {item}
+        item={item}
         setShadow={setShadow}
       />
     </>

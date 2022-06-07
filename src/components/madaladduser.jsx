@@ -25,11 +25,41 @@ function ModalAddUser({ modulToggle, setModulToggle, setShadow }) {
   let saveUserInRS = () => {
     if ((firstName, telegram, instagram, login, modul)) {
       let obj = {
+        id: Math.floor(Math.random() * (500 - 200)) + 200,
         firstName: firstName,
         telegram: telegram,
         instagram: instagram,
         login: login,
         modul: modul,
+        progress:[ {title: 'Переменные', status: true},
+        {title: 'Типы данных', status: true},
+         {title: 'Операторы', status: false},
+         {title: 'Операторы сравнения', status: true},
+        {title: 'Условные операторы', status: true},
+         {title: 'Логические операторы', status: false},
+       {title: 'Цикл', status: true},
+         {title: "Конструкция 'switch'", status: true},
+         {title: 'Функции', status: false},
+         {title: 'Объекты', status: true},
+         {title: 'this, методы объекта', status: true},
+         {title: 'Конструктор', status: false},
+         {title: 'Методы у примитивов', status: true},
+         {title: 'Числа', status: true},
+       {title: 'Строки', status: false},
+         {title: 'Массивы', status: false},
+        {title: 'Методы массивов', status: true},
+        {title: 'Map и Set', status: true},
+        {title: 'Object.keys, values, entries', status: false},
+         {title: 'Деструктурирующее присваивание', status: true},
+         {title: 'Дата и время', status: true},
+         {title: 'Формат JSON, метод toJSON', status: false},
+         {title: 'Прототипное наследование', status: true},
+         {title: 'class', status: true},
+         {title: 'try-catch', status: false},
+         {title: 'callback', status: true},
+         {title: 'promise', status: true},
+         {title: 'async/await', status: false}],
+         updatedAt: "2022-05-18T11:56:29.598Z"
       };
       dispatch(saveUser(obj));
       setModulToggle(false);
@@ -91,8 +121,9 @@ function ModalAddUser({ modulToggle, setModulToggle, setShadow }) {
               HTML
             </option>
             <option value={"CSS"}>CSS</option>
-            <option value={"JS"}>JS</option>
+            <option value={"JS"}>JavaScript</option>
             <option value={"REACT"}>REACT</option>
+            <option value={"NODE"}>NODE</option>
           </select>
         </div>
 

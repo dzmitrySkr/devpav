@@ -15,6 +15,7 @@ function ModalChangeUser({
   let [toggleName, setToggleName] = useState(true);
   let [name, setName] = useState(`${item.firstName} ${item.lastName}`);
   let dispatch = useDispatch();
+  console.log(item);
 
   useEffect(() => {
     let done = item.progress.filter((item) => item.status);
