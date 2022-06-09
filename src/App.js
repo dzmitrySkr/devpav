@@ -1,6 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import TaskApp from './TasksApp';
+
+import './App.scss';
+import TaskApp from './components/TasksApp';
 
 function App() {
   return (

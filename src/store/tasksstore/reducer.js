@@ -3,8 +3,8 @@ import { CREATE_STORE, CHANGE_STORE, DELETE_STORE } from "./action";
 let defaultStore = {
   tasks: [
     { id: 1, text: "NEW i should throw garbige" },
-    { id: 2, text: "NEW Cut my hair" },
-    { id: 3, text: "NEW go for a walk" },
+    { id: 2, text: "NEW #Cut my hair" },
+    { id: 3, text: "NEW go for a #walk" },
   ],
 };
 

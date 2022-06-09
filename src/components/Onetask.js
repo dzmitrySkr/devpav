@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, changeTask } from "./store/action";
-import { createInp } from "./inpstore/action";
+import { deleteTask, changeTask } from "../store/tasksstore/action";
+import { createInp } from "../store/inpstore/action";
 
 function Onetask({ name, id, func }) {
   let [inputstate, setInputstate] = useState(true);
@@ -16,19 +16,19 @@ function Onetask({ name, id, func }) {
     dispatch(createInp(name));
     !inputstate && dispatch(changeTask(id, secStore.input));
     !inputstate && dispatch(createInp(""));
-
     setInputstate(!inputstate);
   };
 
   return (
     <div className="flexcontainer">
+
       {inputstate ? (
-        <p onClick={() => toggle()}>{name}</p>
+        <p className="title_task " onClick={() => toggle()}>{name}</p>
       ) : (
         <input
           value={secStore.input}
           autoFocus
-          className="input"
+          className="title_input input"
           //Тут надо записывать из второго стора(инпута) в первый стор. СПРОСИТЬ У ПАВЛА
           onClick={() => toggle()}
           onKeyPress={(e) => e.key === "Enter" && toggle()}
@@ -37,10 +37,11 @@ function Onetask({ name, id, func }) {
           onBlur={() => toggle()}
         ></input>
       )}
-      <div>
+    
+      <div className="icons">
         <p className="inline" onClick={() => toggle()}>
           {" "}
-          🙉{" "}
+          ✏️{" "}
         </p>
         <p className="inline" onClick={() => dispatch(deleteTask(name))}>
           ❌

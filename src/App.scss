@@ -1,3 +1,6 @@
+
+$bgc: #282c34;
+
 .App {
   text-align: center;
 }
@@ -14,7 +17,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: $bgc;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,6 +52,9 @@
   min-width: 368px;
 }
 
+.main{
+  width: 55%;
+}
 .inline {
   display: inline-block;
   cursor: pointer;
@@ -60,5 +66,36 @@
   color: white;
   border: 1px red dashed;
   outline:none;
-
+  width: 100%;
 }
+
+.title_task{
+  text-align: left;
+}
+
+.icons{
+  flex: 0 0 100px;;
+}
+
+.search_teg_input{
+  margin: 20px;
+}
+
+.add_input{
+  margin-bottom: 100px;
+}
+
+
+.tags_box{
+  position: fixed;
+  left: 0;
+  top: 150px;
+  width: 15%;
+  background-color: cadetblue;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  min-height: 20%;
+}
+
+
+
