@@ -1,4 +1,3 @@
-
 $bgc: #282c34;
 
 .App {
@@ -40,7 +39,6 @@ $bgc: #282c34;
   }
 }
 
-
 .flexcontainer {
   display: flex;
   justify-content: space-between;
@@ -52,7 +50,7 @@ $bgc: #282c34;
   min-width: 368px;
 }
 
-.main{
+.main {
   width: 55%;
 }
 .inline {
@@ -64,29 +62,28 @@ $bgc: #282c34;
   background-color: #3c434b;
   font-size: calc(10px + 2vmin);
   color: white;
-  border: 1px red dashed;
-  outline:none;
+  border: 1px rgb(137, 82, 255) dashed;
+  outline: none;
   width: 100%;
 }
 
-.title_task{
+.title_task {
   text-align: left;
 }
 
-.icons{
-  flex: 0 0 100px;;
+.icons {
+  flex: 0 0 100px;
 }
 
-.search_teg_input{
+.search_teg_input {
   margin: 20px;
 }
 
-.add_input{
+.add_input {
   margin-bottom: 100px;
 }
 
-
-.tags_box{
+.tags_box {
   position: fixed;
   left: 0;
   top: 150px;
@@ -97,14 +94,12 @@ $bgc: #282c34;
   min-height: 20%;
 }
 
-.tags_box{
+.tags_box {
   p {
     cursor: pointer;
   }
 }
 
-span{
-  color: red
+span {
+  color: ff5454;
 }
-
-
