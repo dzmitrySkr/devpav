@@ -1,17 +1,16 @@
-import {useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, changeTask } from "../store/tasksstore/action";
 import { createInp } from "../store/inpstore/action";
+// import parse from "html-react-parser";
 
-function Onetask({ name, id, func }) {
+function Onetask({ name, id }) {
   let [inputstate, setInputstate] = useState(true);
-
-  //Тут опять достаем наш стор(объект) и присваиваем переменной
-  let firstStore = useSelector((state) => state.reducer.tasks);
-  //Достаем наш второй стор(объект) и присваиваем переменной
+  let parse = require("html-react-parser");
   let secStore = useSelector((state) => state.newreducer);
   let dispatch = useDispatch();
 
+  //переключение инпута и тега P
   let toggle = () => {
     dispatch(createInp(name));
     !inputstate && dispatch(changeTask(id, secStore.input));
@@ -19,25 +18,34 @@ function Onetask({ name, id, func }) {
     setInputstate(!inputstate);
   };
 
+  //Делаем парсинг для отображения тега спан, если мы его нашли)))
+  let parseName = parse(
+    name
+      .split(" ")
+      .map((element) => {
+        return element.includes("#") ? `<span> ${element} </span>` : element;
+      })
+      .join(" ")
+  );
+
   return (
     <div className="flexcontainer">
-
       {inputstate ? (
-        <p className="title_task " onClick={() => toggle()}>{name}</p>
+        <p className="title_task " onClick={() => toggle()}>
+          {parseName}
+        </p>
       ) : (
         <input
           value={secStore.input}
           autoFocus
           className="title_input input"
-          //Тут надо записывать из второго стора(инпута) в первый стор. СПРОСИТЬ У ПАВЛА
           onClick={() => toggle()}
           onKeyPress={(e) => e.key === "Enter" && toggle()}
-          //Тут надо как-то положить наш name во второй стор, и дописывать в него что-то. СПРОСИТЬ У ПАВЛА
           onChange={(e) => dispatch(createInp(e.target.value))}
           onBlur={() => toggle()}
         ></input>
       )}
-    
+
       <div className="icons">
         <p className="inline" onClick={() => toggle()}>
           {" "}
