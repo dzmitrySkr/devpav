@@ -50,3 +50,9 @@ li:hover::before {
 }
 
 
+.exit_btn{
+  position: relative;
+  bottom: -10vh;
+  color: rgb(255, 217, 217);
+}
+

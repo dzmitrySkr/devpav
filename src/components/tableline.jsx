@@ -18,12 +18,9 @@ function TableLine({ item, setShadow }) {
     const serch = async () => {
       let response = await fetch(`${URL2}${item.id}`);
       let searchnodules = await response.json();
-  
-     
-        let response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
-        let searchnodules2 = await response2.json();
-        setModul(searchnodules2.title);
-      
+      let response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
+      let searchnodules2 = await response2.json();
+      setModul(searchnodules2.title);
     };
     serch().catch(console.error);
   }, []);

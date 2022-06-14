@@ -3,8 +3,17 @@ import "../styles/main.css";
 import Users from "./users";
 import Moduls from "./moduls";
 import Another from "./another";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+  let navigate = useNavigate()
+
+  let exit = () => {
+    localStorage.removeItem('token')
+    navigate('/')
+  }
+
+
   return (
     <>
       <div className="flexwrapper">
@@ -20,6 +29,7 @@ function Main() {
               {" "}
               <li>Разное</li>
             </Link>
+            <li className="exit_btn" onClick={()=>exit()}>Выход</li>
           </ul>
         </div>
         <div className="infobar">
