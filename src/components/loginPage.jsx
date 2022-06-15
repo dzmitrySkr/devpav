@@ -1,5 +1,4 @@
 import { Form, Input, Button } from "antd";
-import axios from "axios";
 import "../styles/login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +9,7 @@ function LoginPage() {
   let navigate = useNavigate();
 
   const onFinish = (values) => {
-    giraxios
+    axios
       .post("https://typ-back.herokuapp.com/api/auth/login", {
         login: values.username,
         password: values.password,
