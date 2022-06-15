@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import "../styles/tableline.css";
-import ModalChangeUser from "./modalChangeUser";
+import ModalChangeUser from "./ModalChangeUser";
 
 function TableLine({ item, setShadow }) {
-  let URL = "https://typ-back.herokuapp.com/api/socialNetworks/";
-  let URL2 = "https://typ-back.herokuapp.com/api/usersModules/";
-  let URL3 = "https://typ-back.herokuapp.com/api/modules/";
+  let URL = process.env.REACT_APP_URL_SOCNET;
+  let URL2 = process.env.REACT_APP_URL_USERMODUL;
+  let URL3 = process.env.REACT_APP_URL_MODULES;
 
   let [instaFromBack, setInstaFromBack] = useState("");
   let [telegaFromBack, setTelegaFromBack] = useState("");
@@ -20,7 +20,7 @@ function TableLine({ item, setShadow }) {
       let searchnodules = await response.json();
       let response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
       let searchnodules2 = await response2.json();
-      setModul(searchnodules2.title);
+      searchnodules2 && setModul(searchnodules2.title);
     };
     serch().catch(console.error);
   }, []);
@@ -29,9 +29,9 @@ function TableLine({ item, setShadow }) {
   useEffect(() => {
     const serch = async () => {
       let response = await fetch(`${URL}${item.id}`);
-      let searchusers = await response.json();
-      searchusers && setInstaFromBack(searchusers.instagram);
-      searchusers && setTelegaFromBack(searchusers.telegram);
+      let searchUsers = await response.json();
+      searchUsers && setInstaFromBack(searchUsers.instagram);
+      searchUsers && setTelegaFromBack(searchUsers.telegram);
     };
     serch().catch(console.error);
   }, []);
@@ -63,14 +63,14 @@ function TableLine({ item, setShadow }) {
           {item.updatedAt &&
             item.updatedAt.split("T")[0].split("-").reverse().join("-")}
         </div>
-        <div className="action line_item">Пригласить</div>
+        <div className="action line_item">Invite</div>
         <div
           className="change line_item"
           onClick={() => {
             return setToggleModalChUser(!toggleModalChUser), setShadow(true);
           }}
         >
-          Изменить
+          Change
         </div>
       </div>
 

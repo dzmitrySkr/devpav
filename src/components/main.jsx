@@ -1,18 +1,18 @@
 import { Link, Routes, Route } from "react-router-dom";
 import "../styles/main.css";
-import Users from "./users";
-import Moduls from "./moduls";
-import Another from "./another";
+import Users from "./Users";
+import Moduls from "./Moduls";
+import Another from "./Another";
 import { useNavigate } from "react-router-dom";
 
 function Main() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
+  //Delete toket, navigate to LoginPage
   let exit = () => {
-    localStorage.removeItem('token')
-    navigate('/')
-  }
-
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <>
@@ -20,16 +20,18 @@ function Main() {
         <div className="sidebar">
           <ul>
             <Link to={"/"}>
-              <li>Пользователи</li>
+              <li>Users</li>
             </Link>
             <Link to={"moduls"}>
-              <li>Модули</li>
+              <li>Moduls</li>
             </Link>
             <Link to={"another"}>
               {" "}
-              <li>Разное</li>
+              <li>Another</li>
             </Link>
-            <li className="exit_btn" onClick={()=>exit()}>Выход</li>
+            <li className="exit_btn" onClick={() => exit()}>
+              Exit
+            </li>
           </ul>
         </div>
         <div className="infobar">

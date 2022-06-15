@@ -14,7 +14,7 @@ function ModalAddUser({ modulToggle, setModulToggle, setShadow }) {
   //Close modal. Clea input
   let closeModal = () => {
     setModulToggle(false);
-    setShadow(false)
+    setShadow(false);
     setFirstName("");
     setTelegram("");
     setInstagram("");
@@ -31,39 +31,41 @@ function ModalAddUser({ modulToggle, setModulToggle, setShadow }) {
         instagram: instagram,
         login: login,
         modul: modul,
-        progress:[ {title: 'Переменные', status: true},
-        {title: 'Типы данных', status: true},
-         {title: 'Операторы', status: false},
-         {title: 'Операторы сравнения', status: true},
-        {title: 'Условные операторы', status: true},
-         {title: 'Логические операторы', status: false},
-       {title: 'Цикл', status: true},
-         {title: "Конструкция 'switch'", status: true},
-         {title: 'Функции', status: false},
-         {title: 'Объекты', status: true},
-         {title: 'this, методы объекта', status: true},
-         {title: 'Конструктор', status: false},
-         {title: 'Методы у примитивов', status: true},
-         {title: 'Числа', status: true},
-       {title: 'Строки', status: false},
-         {title: 'Массивы', status: false},
-        {title: 'Методы массивов', status: true},
-        {title: 'Map и Set', status: true},
-        {title: 'Object.keys, values, entries', status: false},
-         {title: 'Деструктурирующее присваивание', status: true},
-         {title: 'Дата и время', status: true},
-         {title: 'Формат JSON, метод toJSON', status: false},
-         {title: 'Прототипное наследование', status: true},
-         {title: 'class', status: true},
-         {title: 'try-catch', status: false},
-         {title: 'callback', status: true},
-         {title: 'promise', status: true},
-         {title: 'async/await', status: false}],
-         updatedAt: "2022-05-18T11:56:29.598Z"
+        progress: [
+          { title: "Переменные", status: true },
+          { title: "Типы данных", status: true },
+          { title: "Операторы", status: false },
+          { title: "Операторы сравнения", status: true },
+          { title: "Условные операторы", status: true },
+          { title: "Логические операторы", status: false },
+          { title: "Цикл", status: true },
+          { title: "Конструкция 'switch'", status: true },
+          { title: "Функции", status: false },
+          { title: "Объекты", status: true },
+          { title: "this, методы объекта", status: true },
+          { title: "Конструктор", status: false },
+          { title: "Методы у примитивов", status: true },
+          { title: "Числа", status: true },
+          { title: "Строки", status: false },
+          { title: "Массивы", status: false },
+          { title: "Методы массивов", status: true },
+          { title: "Map и Set", status: true },
+          { title: "Object.keys, values, entries", status: false },
+          { title: "Деструктурирующее присваивание", status: true },
+          { title: "Дата и время", status: true },
+          { title: "Формат JSON, метод toJSON", status: false },
+          { title: "Прототипное наследование", status: true },
+          { title: "class", status: true },
+          { title: "try-catch", status: false },
+          { title: "callback", status: true },
+          { title: "promise", status: true },
+          { title: "async/await", status: false },
+        ],
+        updatedAt: "2022-05-18T11:56:29.598Z",
       };
       dispatch(saveUser(obj));
       setModulToggle(false);
-      setShadow(false)
+      setShadow(false);
     }
   };
 
@@ -71,7 +73,7 @@ function ModalAddUser({ modulToggle, setModulToggle, setShadow }) {
     <>
       <div className={modulToggle ? "modal" : "modal hide"}>
         <div className="name">
-          <p className="name_title title">Имя Фамилия</p>
+          <p className="name_title title">Name Surname</p>
           <input
             type="text"
             placeholder="John Malkovich"
@@ -111,7 +113,7 @@ function ModalAddUser({ modulToggle, setModulToggle, setShadow }) {
           />
         </div>
         <div className="modul">
-          <p className="modul_title title">Модуль</p>
+          <p className="modul_title title">Modul</p>
           <select
             className="modul_select"
             value={modul}

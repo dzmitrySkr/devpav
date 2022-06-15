@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import "../styles/users.css";
-import TableLine from "./tableline";
-import TableTitleLine from "./tabletitleline";
+import TableLine from "./TableLine";
+import TableTitleLine from "./TableTitleLine";
 import { useDispatch, useSelector } from "react-redux";
 import addReduser from "../store/redusers/addReduser";
 import {
@@ -10,18 +10,18 @@ import {
   userSortByName,
   userSortByDate,
 } from "../store/action/addAction";
-import ModalAddUser from "./madaladduser";
-import Loading from "./loading";
+import ModalAddUser from "./ModalAddUser";
+import Loading from "./LoadingBck";
 
 function Users() {
-  let URL = "https://typ-back.herokuapp.com/api/users/full";
+  let URL = process.env.REACT_APP_URL_USERS;
   let dispatch = useDispatch();
   let { storeUsers } = useSelector((state) => state);
   let [modulToggle, setModulToggle] = useState(false);
   let [userSearch, setUserSearch] = useState([]);
   let [shadow, setShadow] = useState(false);
 
-
+  console.log(process.env.REACT_APP_URL_USERS);
 
   // Load users from back in redux store (RS)
   useEffect(() => {
@@ -29,7 +29,6 @@ function Users() {
       let response = await fetch(`${URL}`);
       let searchusers = await response.json();
       storeUsers.length || dispatch(addUsers(searchusers));
- 
     };
     serch().catch(console.error);
   }, []);
@@ -65,12 +64,17 @@ function Users() {
     <>
       <div className="title_wrapper">
         <div className="title">
-          <h2>Список студентов</h2>
+          <h2>Users List</h2>
         </div>
         <div className="right">
           <div className="add_btn">
-            <button className="add" onClick={() => {return setModulToggle(true), setShadow(true) }}>
-              Добавить пользователя
+            <button
+              className="add"
+              onClick={() => {
+                return setModulToggle(true), setShadow(true);
+              }}
+            >
+              Add user
             </button>
           </div>
           <div className="search">
@@ -92,9 +96,7 @@ function Users() {
         setModulToggle={setModulToggle}
       />
 
-    <Loading  userSearch={userSearch} />
-         
-
+      <Loading userSearch={userSearch} />
     </>
   );
 }

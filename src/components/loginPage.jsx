@@ -16,7 +16,6 @@ function LoginPage() {
         password: values.password,
       })
       .then((res) => {
-        console.log(res);
         if (res.data.token) {
           navigate("main");
           localStorage.setItem("token", res.data.token.split(".")[0]);
@@ -36,9 +35,9 @@ function LoginPage() {
 
   return (
     <>
-      <h2 className="enter_title">Вход в личный кабинет</h2>
+      <h2 className="enter_title">Enter</h2>
       <p className={show ? "login_error" : "login_error none"}>
-        Неправильный логин или пароль
+        Incorrect login or password
       </p>
 
       <Form

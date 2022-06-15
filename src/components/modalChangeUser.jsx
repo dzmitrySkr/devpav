@@ -54,7 +54,7 @@ function ModalChangeUser({
         <button onClick={() => changeName()}>click</button>
 
         <hr></hr>
-        <h2 className="prigress_title">ПРОГРЕСС</h2>
+        <h2 className="prigress_title">PROGRESS</h2>
         <div className="progress_wrapprer">
           <div className="progress_line">
             <div

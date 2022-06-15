@@ -18,10 +18,10 @@ function TableTitleLine({ sortByName, sortByDate }) {
       </div>
       <div className="telrgram line_item">Telegram</div>
       <div className="instagram line_item">Instagram</div>
-      <div className="login line_item">Логин</div>
-      <div className="modul_name line_item">Модули</div>
+      <div className="login line_item">Login</div>
+      <div className="modul_name line_item">Moduls</div>
       <div className="start_date line_item">
-        Дата начала{" "}
+        Start date{" "}
         <span
           onClick={() => sortByDate(setSortOnDate, setSortOnName)}
           className={sortOnDate ? "unicode start" : "unicode unicode_off start"}

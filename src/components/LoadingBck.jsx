@@ -1,6 +1,6 @@
 import "../styles/loading.css";
 
-function Loading({ userSearch }) {
+function LoadingBcg({ userSearch }) {
   return (
     <>
       <div className={userSearch.length === 0 ? "spinner" : "spinner dis"}>
@@ -21,4 +21,4 @@ function Loading({ userSearch }) {
   );
 }
 
-export default Loading;
+export default LoadingBcg;
