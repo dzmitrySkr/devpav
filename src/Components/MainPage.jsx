@@ -46,8 +46,8 @@ function MainPage() {
       <header>
         <p>Курсы валют на сегодня:</p>
         <div className="flex_header" >
-        <p>100 гривен = <span>{euro}</span> евро</p>
-        <p>100 гривен = <span>{dollar}</span> доллара</p>
+        <p>100 гривен = <span>{euro.toFixed(3)}</span> евро</p>
+        <p>100 гривен = <span>{dollar.toFixed(3)}</span> доллара</p>
         </div>
       </header>
       <main>
