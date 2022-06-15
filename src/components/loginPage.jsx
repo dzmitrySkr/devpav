@@ -10,8 +10,7 @@ function LoginPage() {
   let navigate = useNavigate();
 
   const onFinish = (values) => {
-    
-    axios
+    giraxios
       .post("https://typ-back.herokuapp.com/api/auth/login", {
         login: values.username,
         password: values.password,
