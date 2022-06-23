@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import "antd/dist/antd.css";
 
 function LoginPage() {
-  let [show, setShow] = useState(false);
-  let navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     axios
@@ -89,7 +89,7 @@ function LoginPage() {
           }}
         >
           <Button type="primary" htmlType="submit">
-            Submit
+            Sumbit
           </Button>
         </Form.Item>
       </Form>

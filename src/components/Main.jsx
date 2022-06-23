@@ -1,15 +1,15 @@
 import { Link, Routes, Route } from "react-router-dom";
 import "../styles/main.css";
-import Users from "./Users";
-import Moduls from "./Moduls";
-import Another from "./Another";
+import Users from "./UsersPage/Users";
+import Moduls from "./ModulPage/Moduls";
+import Other from "./Other";
 import { useNavigate } from "react-router-dom";
 
 function Main() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   //Delete toket, navigate to LoginPage
-  let exit = () => {
+  const exit = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
@@ -25,9 +25,9 @@ function Main() {
             <Link to={"moduls"}>
               <li>Moduls</li>
             </Link>
-            <Link to={"another"}>
+            <Link to={"other"}>
               {" "}
-              <li>Another</li>
+              <li>Other</li>
             </Link>
             <li className="exit_btn" onClick={() => exit()}>
               Exit
@@ -38,7 +38,7 @@ function Main() {
           <Routes>
             <Route path="/" element={<Users />} />
             <Route path="moduls" element={<Moduls />} />
-            <Route path="another" element={<Another />} />
+            <Route path="Other" element={<Other />} />
           </Routes>
         </div>
       </div>

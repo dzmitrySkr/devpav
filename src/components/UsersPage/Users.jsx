@@ -1,41 +1,41 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import "../styles/users.css";
+import "../../styles/users.css";
 import TableLine from "./TableLine";
 import TableTitleLine from "./TableTitleLine";
 import { useDispatch, useSelector } from "react-redux";
-import addReduser from "../store/redusers/addReduser";
 import {
   addUsers,
   userSortByName,
   userSortByDate,
-} from "../store/action/addAction";
+  userSortByNameREV,
+  userSortByDateREV,
+} from "../../store/action/addAction";
 import ModalAddUser from "./ModalAddUser";
-import Loading from "./LoadingBck";
+import Loading from "../LoadingBck";
 
 function Users() {
-  let URL = process.env.REACT_APP_URL_USERS;
-  let dispatch = useDispatch();
-  let { storeUsers } = useSelector((state) => state);
-  let [modulToggle, setModulToggle] = useState(false);
-  let [userSearch, setUserSearch] = useState([]);
-  let [shadow, setShadow] = useState(false);
-
-  console.log(process.env.REACT_APP_URL_USERS);
+  const FULL_NAME_URL = process.env.REACT_APP_URL_USERS;
+  const dispatch = useDispatch();
+  const { storeUsers } = useSelector((state) => state);
+  const [modulToggle, setModulToggle] = useState(false);
+  const [userSearch, setUserSearch] = useState([]);
 
   // Load users from back in redux store (RS)
   useEffect(() => {
     const serch = async () => {
-      let response = await fetch(`${URL}`);
+      let response = await fetch(`${FULL_NAME_URL}`);
       let searchusers = await response.json();
-      storeUsers.length || dispatch(addUsers(searchusers));
+      storeUsers.lengths || dispatch(addUsers(searchusers));
     };
     serch().catch(console.error);
+    console.log("save ti redux");
   }, []);
 
   //Save users from RS to variable
   useEffect(() => {
     setUserSearch(storeUsers);
+    console.log("save to VARIABLE");
   }, [storeUsers]);
 
   //During searching we looking for coincidents in redux and save them in variable
@@ -47,17 +47,17 @@ function Users() {
   };
 
   //sort in RS by Name
-  let sortByName = (setSortOnName, setSortOnDate) => {
-    dispatch(userSortByName());
-    setSortOnName(false);
-    setSortOnDate(true);
+  let sortByName = (setSortOnName, setSortOnDate, swich) => {
+    swich ? dispatch(userSortByName()) : dispatch(userSortByNameREV());
+    setSortOnName(true);
+    setSortOnDate(false);
   };
 
   //sort in RS by Date
-  let sortByDate = (setSortOnDate, setSortOnName) => {
-    dispatch(userSortByDate());
-    setSortOnDate(false);
-    setSortOnName(true);
+  let sortByDate = (setSortOnDate, setSortOnName, swich) => {
+    swich ? dispatch(userSortByDate()) : dispatch(userSortByDateREV());
+    setSortOnDate(true);
+    setSortOnName(false);
   };
 
   return (
@@ -71,7 +71,7 @@ function Users() {
             <button
               className="add"
               onClick={() => {
-                return setModulToggle(true), setShadow(true);
+                return setModulToggle(true);
               }}
             >
               Add user
@@ -86,15 +86,16 @@ function Users() {
       <div className="table_title table_item">
         <TableTitleLine sortByName={sortByName} sortByDate={sortByDate} />
         {userSearch.map((item) => (
-          <TableLine item={item} key={item.id} setShadow={setShadow} />
+          <TableLine item={item} key={item.id} />
         ))}
       </div>
-      <div className={shadow ? "shadow" : "shadow off"}></div>
-      <ModalAddUser
-        setShadow={setShadow}
-        modulToggle={modulToggle}
-        setModulToggle={setModulToggle}
-      />
+
+      <div
+        onClick={() => setModulToggle(false)}
+        className={modulToggle ? "shadow" : "shadow off"}
+      ></div>
+
+      <ModalAddUser modulToggle={modulToggle} setModulToggle={setModulToggle} />
 
       <Loading userSearch={userSearch} />
     </>
