@@ -9,29 +9,30 @@ import { addUsers } from "../../store/action/addAction";
 function ModalChangeUser({
   toggleModalChUser,
   setToggleModalChUser,
-  item,
+  fulluser,
   telegram,
   instagram,
 }) {
   const [persent, setPersent] = useState(0);
   const [days, setDays] = useState(0);
   const [toggleName, setToggleName] = useState(true);
-  const [name, setName] = useState(`${item.firstName} ${item.lastName}`);
+  const [name, setName] = useState(`${fulluser.firstName} ${fulluser.lastName}`);
   const dispatch = useDispatch();
   const FULL_NAME_URL = process.env.REACT_APP_URL_USERS;
+  const CHANGEUSER = process.env.REACT_APP_URL_CHANGEUSER
 
   useEffect(() => {
-    const done = item.progress.filter((item) => item.status);
-    setPersent(((done.length * 100) / item.progress.length).toFixed(2));
+    const done = fulluser.progress.filter((fulluser) => fulluser.status);
+    setPersent(((done.length * 100) / fulluser.progress.length).toFixed(2));
     const time =
       new Date().getTime() -
-      new Date(item.updatedAt.split("T")[0].split("-").join("-")).getTime();
+      new Date(fulluser.updatedAt.split("T")[0].split("-").join("-")).getTime();
     setDays(Math.floor(time / 86400000));
   }, []);
 
   const changeName = async () => {
     const obj = {
-      login: item.login,
+      login: fulluser.login,
       password: 123123,
       firstName: name,
       lastName: "",
@@ -44,7 +45,7 @@ function ModalChangeUser({
     if (!toggleName) {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_URL_CHANGEUSER}/${item.id}`,
+          `${CHANGEUSER}/${fulluser.id}`,
           {
             method: "PUT",
             headers: {
@@ -80,7 +81,7 @@ function ModalChangeUser({
 
         {toggleName ? (
           <div className="user_name">
-            {item.firstName} {item.lastName}
+            {fulluser.firstName} {fulluser.lastName}
           </div>
         ) : (
           <input value={name} onChange={(e) => setName(e.target.value)} />
@@ -104,7 +105,7 @@ function ModalChangeUser({
 
         <hr></hr>
 
-        <ModalChangeUserInfo days={days} item={item} />
+        <ModalChangeUserInfo days={days} fulluser={fulluser} />
         <hr></hr>
       </div>
     </>

@@ -1,25 +1,28 @@
 import "../../styles/moduleBox.css";
-import { useDispatch } from "react-redux";
-import { deleteModule } from "../../store/action/modulsAction";
+import { useEffect } from "react";
 
 function ModuleBox({ item }) {
-  let dispatch = useDispatch();
+
+  let URL = process.env.REACT_APP_URL_MODULES;
+
+  const deleteBox = async() => {
+    await fetch(`${URL}/${item.id}`, { method: "DELETE" });
+  };
+
+  useEffect(() => {}, []);  
+
   return (
     <div className="module_box">
-      <p className="module_name">{item.name}</p>
+      <p className="module_name">{item.title}</p>
       <div
         className="colored first"
-        style={{ backgroundColor: item.color }}
-      ></div>
-      <div
-        className="colored second"
         style={{ backgroundColor: item.color }}
       ></div>
 
       <div
         className="delete_box"
         onClick={() => {
-          dispatch(deleteModule(item));
+          deleteBox();
         }}
       >
         &#128473;

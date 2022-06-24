@@ -85,8 +85,8 @@ function Users() {
 
       <div className="table_title table_item">
         <TableTitleLine sortByName={sortByName} sortByDate={sortByDate} />
-        {userSearch.map((item) => (
-          <TableLine item={item} key={item.id} />
+        {userSearch.map((fulluser) => (
+          <TableLine fulluser={fulluser} key={fulluser.id} />
         ))}
       </div>
 

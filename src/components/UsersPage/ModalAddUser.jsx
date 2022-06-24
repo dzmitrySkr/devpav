@@ -1,8 +1,9 @@
 import "../../styles/modal.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { saveUser } from "../store/action/addAction";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../../store/action/addAction";
-import { useSelector } from "react-redux/es/exports";
 
 function ModalAddUser({ modulToggle, setModulToggle }) {
   const FULL_NAME_URL = process.env.REACT_APP_URL_USERS;
@@ -10,9 +11,11 @@ function ModalAddUser({ modulToggle, setModulToggle }) {
   const [telegram, setTelegram] = useState("");
   const [instagram, setInstagram] = useState("");
   const [login, setLogin] = useState("");
-  const [modul, setModul] = useState("HTML");
-  let { storeModules } = useSelector((store) => store);
+  const [modul, setModul] = useState("");
+  // const dispatch = useDispatch();
   const dispatch = useDispatch();
+  let [storeModules, setStoreModules] = useState([]);
+  const URL = process.env.REACT_APP_URL_MODULES;
 
   //Close modal. Clean input
   const closeModal = () => {
@@ -23,6 +26,16 @@ function ModalAddUser({ modulToggle, setModulToggle }) {
     setLogin("");
     setModul("");
   };
+
+  //search in back moduls and save in variable
+  useEffect(() => {
+    const search = async () => {
+      let resp = await fetch(URL);
+      let moduls = await resp.json();
+      setStoreModules(moduls);
+    };
+    search().catch(console.error);
+  }, []);
 
   let saveUserInRS = async () => {
     if ((firstName, telegram, instagram, login, modul)) {
@@ -108,12 +121,9 @@ function ModalAddUser({ modulToggle, setModulToggle }) {
             value={modul}
             onChange={(e) => setModul(e.target.value)}
           >
-            <option defaultValue={"HTML"} value={"HTML"}>
-              HTML
-            </option>
-            {storeModules.map((item) => {
-              return <option value={item.name}>{item.name}</option>;
-            })}
+            {storeModules.map((item) => (
+              <option value={item.id}>{item.title}</option>
+            ))}
           </select>
         </div>
 

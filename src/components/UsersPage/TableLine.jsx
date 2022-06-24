@@ -3,10 +3,10 @@ import React from "react";
 import "../../styles/tableline.css";
 import ModalChangeUser from "./ModalChangeUser";
 
-function TableLine({ item }) {
-  const URL = process.env.REACT_APP_URL_SOCNET;
-  const URL2 = process.env.REACT_APP_URL_USERMODUL;
-  const URL3 = process.env.REACT_APP_URL_MODULES;
+function TableLine({ fulluser }) {
+  const SOCNET = process.env.REACT_APP_URL_SOCNET;
+  const USER_MODUL = process.env.REACT_APP_URL_USERMODUL;
+  const MODULES = process.env.REACT_APP_URL_MODULES;
 
   const [instaFromBack, setInstaFromBack] = useState("");
   const [telegaFromBack, setTelegaFromBack] = useState("");
@@ -16,9 +16,9 @@ function TableLine({ item }) {
   // add modules
   useEffect(() => {
     const serch = async () => {
-      const response = await fetch(`${URL2}${item.id}`);
+      const response = await fetch(`${USER_MODUL}/${fulluser.id}`);
       const searchnodules = await response.json();
-      const response2 = await fetch(`${URL3}${searchnodules[0].module_id}`);
+      const response2 = await fetch(`${MODULES}/${searchnodules[0].module_id}`);
       const searchnodules2 = await response2.json();
       searchnodules2 && setModul(searchnodules2.title);
     };
@@ -28,7 +28,7 @@ function TableLine({ item }) {
   //add telegram and instagram
   useEffect(() => {
     const serch = async () => {
-      const response = await fetch(`${URL}${item.id}`);
+      const response = await fetch(`${SOCNET}${fulluser.id}`);
       const searchUsers = await response.json();
       searchUsers && setInstaFromBack(searchUsers.instagram);
       searchUsers && setTelegaFromBack(searchUsers.telegram);
@@ -44,24 +44,24 @@ function TableLine({ item }) {
             href={`https://t.me/${
               telegaFromBack
                 ? telegaFromBack.slice(1)
-                : item.telegram && item.telegram.slice(1)
+                : fulluser.telegram && fulluser.telegram.slice(1)
             }`}
             target={"_blank"}
           >
-            {item.firstName} {item.lastName}
+            {fulluser.firstName} {fulluser.lastName}
           </a>
         </div>
         <div className="telrgram line_item">
-          {telegaFromBack || item.telegram}
+          {telegaFromBack || fulluser.telegram}
         </div>
         <div className="instagram line_item">
-          {instaFromBack || item.instagram}
+          {instaFromBack || fulluser.instagram}
         </div>
-        <div className="login line_item">{item.login}</div>
-        <div className="modul_name line_item">{modul || item.modul}</div>
+        <div className="login line_item">{fulluser.login}</div>
+        <div className="modul_name line_item">{modul || fulluser.modul}</div>
         <div className="start_date line_item">
-          {item.updatedAt &&
-            item.updatedAt.split("T")[0].split("-").reverse().join("-")}
+          {fulluser.updatedAt &&
+            fulluser.updatedAt.split("T")[0].split("-").reverse().join("-")}
         </div>
         <div className="action line_item">Invite</div>
 
@@ -83,9 +83,9 @@ function TableLine({ item }) {
       <ModalChangeUser
         toggleModalChUser={toggleModalChUser}
         setToggleModalChUser={setToggleModalChUser}
-        telegram={telegaFromBack || item.telegram}
-        instagram={instaFromBack || item.instagram}
-        item={item}
+        telegram={telegaFromBack || fulluser.telegram}
+        instagram={instaFromBack || fulluser.instagram}
+        fulluser={fulluser}
       />
     </>
   );
