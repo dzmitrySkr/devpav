@@ -2,9 +2,10 @@ import Item from "antd/lib/list/Item";
 import { useEffect, useState } from "react";
 import "../../styles/modalChange.css";
 import { useDispatch } from "react-redux";
-import { changeNameR } from "../../store/action/addAction";
+// import { changeNameR } from "../../store/action/addAction";
 import ModalChangeUserInfo from "./ModalChangeUserInfo";
 import { addUsers } from "../../store/action/addAction";
+
 
 function ModalChangeUser({
   toggleModalChUser,
@@ -24,10 +25,10 @@ function ModalChangeUser({
   useEffect(() => {
     const done = fulluser.progress.filter((fulluser) => fulluser.status);
     setPersent(((done.length * 100) / fulluser.progress.length).toFixed(2));
-    const time =
-      new Date().getTime() -
-      new Date(fulluser.updatedAt.split("T")[0].split("-").join("-")).getTime();
-    setDays(Math.floor(time / 86400000));
+    // const time =
+    //   new Date().getTime() -
+    //   new Date(fulluser.updatedAt.split("T")[0].split("-").join("-")).getTime();
+    // setDays(Math.floor(time / 86400000));
   }, []);
 
   const changeName = async () => {

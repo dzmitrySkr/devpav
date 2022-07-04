@@ -36,7 +36,9 @@ function TableTitleLine({ sortByName, sortByDate }) {
         Start date{" "}
         <span
           onClick={() => {
-            return sortByDate(setSortOnDate, setSortOnName, swich), setSwich(!swich);
+            return (
+              sortByDate(setSortOnDate, setSortOnName, swich), setSwich(!swich)
+            );
           }}
           className={
             sortOnDate

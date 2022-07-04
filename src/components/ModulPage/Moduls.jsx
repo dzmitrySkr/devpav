@@ -5,6 +5,7 @@ import "../../styles/moduleBox.css";
 import ModuleModal from "./ModuleModal";
 import { useState } from "react";
 import { useEffect } from "react";
+import Loading from "../LoadingBck";
 
 function Moduls() {
   let [toggleModal, setToggleModal] = useState(false);
@@ -35,6 +36,8 @@ function Moduls() {
       </div>
 
       <ModuleModal toggleModal={toggleModal} setToggleModal={setToggleModal} />
+
+      <Loading userSearch={storeModules} />
     </>
   );
 }

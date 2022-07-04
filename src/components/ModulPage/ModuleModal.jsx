@@ -1,16 +1,16 @@
 import "../../styles/modulModal.css";
 import { useState } from "react";
 import { CirclePicker } from "react-color";
-import { useDispatch } from "react-redux";
-import { addModule } from "../../store/action/modulsAction";
+// import { useDispatch } from "react-redux";
+// import { addModule } from "../../store/action/modulsAction";
 
 function ModuleModal({ toggleModal, setToggleModal }) {
   let [color, setColor] = useState("");
   let [input, setInput] = useState("");
-  let dispatch = useDispatch();
-  let URL = process.env.REACT_APP_URL_MODULES
+  // let dispatch = useDispatch();
+  let URL = process.env.REACT_APP_URL_MODULES;
 
-  let sumbitModal = async() => {
+  let sumbitModal = async () => {
     if (color || input) {
       let obj = { title: input, color: color };
       try {
@@ -21,11 +21,11 @@ function ModuleModal({ toggleModal, setToggleModal }) {
           },
           body: JSON.stringify(obj),
         });
-          console.log(response);
+        console.log(response);
       } catch (error) {
         // enter your logic for when there is an error (ex. error toast)
         console.log(error);
-      } 
+      }
       cancel();
     }
   };

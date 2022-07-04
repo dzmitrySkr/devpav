@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import "../../styles/tableline.css";
 import ModalChangeUser from "./ModalChangeUser";
+import Moment from "react-moment";
 
 function TableLine({ fulluser }) {
   const SOCNET = process.env.REACT_APP_URL_SOCNET;
@@ -60,8 +61,9 @@ function TableLine({ fulluser }) {
         <div className="login line_item">{fulluser.login}</div>
         <div className="modul_name line_item">{modul || fulluser.modul}</div>
         <div className="start_date line_item">
-          {fulluser.updatedAt &&
-            fulluser.updatedAt.split("T")[0].split("-").reverse().join("-")}
+          {/* {fulluser.updatedAt &&
+            fulluser.updatedAt.split("T")[0].split("-").reverse().join("-")} */}
+          <Moment format="DD-MM-YYYY">{fulluser.updatedAt}</Moment>
         </div>
         <div className="action line_item">Invite</div>
 

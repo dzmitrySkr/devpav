@@ -2,14 +2,13 @@ import "../../styles/moduleBox.css";
 import { useEffect } from "react";
 
 function ModuleBox({ item }) {
-
   let URL = process.env.REACT_APP_URL_MODULES;
 
-  const deleteBox = async() => {
+  const deleteBox = async () => {
     await fetch(`${URL}/${item.id}`, { method: "DELETE" });
   };
 
-  useEffect(() => {}, []);  
+  useEffect(() => {}, []);
 
   return (
     <div className="module_box">

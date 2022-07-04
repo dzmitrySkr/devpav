@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 .flexwrapper {
   display: flex;
   height: 100%;
@@ -5,14 +6,17 @@
 
 .sidebar {
   width: 18%;
-  background-color: rgb(47, 90, 120);
+  background-color: rgb(0 87 83);
   min-height: 100vh;
   padding-top: 100px;
+ 
+
 }
 
 .infobar {
   width: 82%;
-  background-color: rgb(229, 255, 246);
+  background-color: #e9feff;
+  
 }
 
 ul {
@@ -25,8 +29,8 @@ ul {
 li {
   margin-top: 30px;
   color: rgb(235, 246, 255);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: medium;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 18px;
   letter-spacing: 2px;
   position: relative;
   cursor: pointer;
