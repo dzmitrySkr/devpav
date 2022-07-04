@@ -10,7 +10,7 @@ import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { delSearch } from "../store/action/clickAction";
 import { delToken } from "../store/action/tokenAction";
-import 'dotenv/config' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+
 
 
 // AIzaSyCNmXdleaGFSBnvkYGgIN7lk4BqJ6EvB0E
