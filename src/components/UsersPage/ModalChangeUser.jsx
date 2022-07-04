@@ -1,11 +1,9 @@
-import Item from "antd/lib/list/Item";
 import { useEffect, useState } from "react";
 import "../../styles/modalChange.css";
 import { useDispatch } from "react-redux";
 // import { changeNameR } from "../../store/action/addAction";
 import ModalChangeUserInfo from "./ModalChangeUserInfo";
 import { addUsers } from "../../store/action/addAction";
-
 
 function ModalChangeUser({
   toggleModalChUser,
@@ -15,12 +13,13 @@ function ModalChangeUser({
   instagram,
 }) {
   const [persent, setPersent] = useState(0);
-  const [days, setDays] = useState(0);
   const [toggleName, setToggleName] = useState(true);
-  const [name, setName] = useState(`${fulluser.firstName} ${fulluser.lastName}`);
+  const [name, setName] = useState(
+    `${fulluser.firstName} ${fulluser.lastName}`
+  );
   const dispatch = useDispatch();
   const FULL_NAME_URL = process.env.REACT_APP_URL_USERS;
-  const CHANGEUSER = process.env.REACT_APP_URL_CHANGEUSER
+  const CHANGEUSER = process.env.REACT_APP_URL_CHANGEUSER;
 
   useEffect(() => {
     const done = fulluser.progress.filter((fulluser) => fulluser.status);
@@ -45,16 +44,13 @@ function ModalChangeUser({
 
     if (!toggleName) {
       try {
-        const response = await fetch(
-          `${CHANGEUSER}/${fulluser.id}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(obj),
-          }
-        );
+        const response = await fetch(`${CHANGEUSER}/${fulluser.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        });
         const data = await response.json();
         const response2 = await fetch(`${FULL_NAME_URL}`);
         const searchusers = await response2.json();
@@ -79,17 +75,17 @@ function ModalChangeUser({
         >
           &#128473;
         </div>
+        <div className="toggle_name">
+          {toggleName ? (
+            <div className="user_name">
+              {fulluser.firstName} {fulluser.lastName}
+            </div>
+          ) : (
+            <input className="user_name" value={name} onChange={(e) => setName(e.target.value)} />
+          )}
 
-        {toggleName ? (
-          <div className="user_name">
-            {fulluser.firstName} {fulluser.lastName}
-          </div>
-        ) : (
-          <input value={name} onChange={(e) => setName(e.target.value)} />
-        )}
-
-        <button onClick={() => changeName()}>click</button>
-
+          <button onClick={() => changeName()}>clickMe</button>
+        </div>
         <hr></hr>
         <h2 className="prigress_title">PROGRESS</h2>
         <div className="progress_wrapprer">
@@ -106,7 +102,7 @@ function ModalChangeUser({
 
         <hr></hr>
 
-        <ModalChangeUserInfo days={days} fulluser={fulluser} />
+        <ModalChangeUserInfo fulluser={fulluser} />
         <hr></hr>
       </div>
     </>

@@ -20,7 +20,7 @@ function Other() {
     <>
       <div className="widget">
         <p className="widget_title">
-          Погода в <br />
+          Weather in <br />
           {weathers.name}е
         </p>
         <hr />

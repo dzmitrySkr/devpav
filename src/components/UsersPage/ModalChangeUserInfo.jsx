@@ -1,6 +1,6 @@
 import Moment from "react-moment";
 
-function ModalChangeUserInfo({ days, fulluser }) {
+function ModalChangeUserInfo({ fulluser }) {
   return (
     <div className="tasks_wrapper">
       <div className="tasks_box">
@@ -12,7 +12,7 @@ function ModalChangeUserInfo({ days, fulluser }) {
       </div>
 
       <div className="tasks_box">
-        <p className="tasks_title">Taska done</p>
+        <p className="tasks_title">Task done</p>
         <p className="tasks_answer">
           {fulluser.progress.filter((item) => item.status).length}/
           {fulluser.progress.length}

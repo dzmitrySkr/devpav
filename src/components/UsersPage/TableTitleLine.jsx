@@ -31,7 +31,7 @@ function TableTitleLine({ sortByName, sortByDate }) {
       <div className="telrgram line_item">Telegram</div>
       <div className="instagram line_item">Instagram</div>
       <div className="login line_item">Login</div>
-      <div className="modul_name line_item">Moduls</div>
+      <div className="modul_name line_item">Ьodules</div>
       <div className="start_date line_item">
         Start date{" "}
         <span
@@ -51,7 +51,7 @@ function TableTitleLine({ sortByName, sortByDate }) {
           &#9650;
         </span>
       </div>
-      <div className="action line_item">Действие</div>
+      <div className="action line_item">Action</div>
       <div className="change line_item"></div>
     </div>
   );

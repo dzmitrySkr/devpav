@@ -23,7 +23,7 @@ function Main() {
               <li>Users</li>
             </Link>
             <Link to={"moduls"}>
-              <li>Moduls</li>
+              <li>Modules</li>
             </Link>
             <Link to={"other"}>
               {" "}

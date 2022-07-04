@@ -115,7 +115,7 @@ function ModalAddUser({ modulToggle, setModulToggle }) {
           />
         </div>
         <div className="modul">
-          <p className="modul_title title">Modul</p>
+          <p className="modul_title title">Module</p>
           <select
             className="modul_select"
             value={modul}
@@ -129,7 +129,7 @@ function ModalAddUser({ modulToggle, setModulToggle }) {
 
         <div className="buttons">
           <button className="sumbit" onClick={() => saveUserInRS()}>
-            Sumbit
+          Submit
           </button>
           <button className="cancel" onClick={() => closeModal()}>
             Cancel

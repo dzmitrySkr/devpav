@@ -89,7 +89,7 @@ function LoginPage() {
           }}
         >
           <Button type="primary" htmlType="submit">
-            Sumbit
+            Submit
           </Button>
         </Form.Item>
       </Form>
