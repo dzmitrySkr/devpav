@@ -19,7 +19,6 @@ let Accounts = ({ user }) => {
     serch().catch(console.error);
   }, []);
 
-  
   return (
     <>
       <div className="account_box">
