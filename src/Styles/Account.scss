@@ -1,0 +1,12 @@
+.account_box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    text-align: left;
+
+    .account_item {
+        width: 100%;
+        align-self: center;
+    }
+}
