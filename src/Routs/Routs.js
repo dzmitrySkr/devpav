@@ -1,26 +1,26 @@
-import logo from "./logo.svg";
-import "./App.css";
+
+import "../App.css";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import Components from "./Components";
-import Props from "./Props";
-import Home from "./Home";
-import State from "./State";
-import Lifestyle from './Lifestyle'
-import Events from './Events'
-import Key from './Key'
-import Vdom from "./Vdom";
-import Refs from "./Refs";
-import Asrequest from "./Asrequest";
-import Context from "./Context";
-import Form from "./Form";
-import Routerr from "./Routerr";
-import Fragment from "./Fragment";
-import Memo from "./Memo";
-import UseEffect from "./useEffect";
-import Newcomp from "./newcomp";
+import Components from "../components/Components";
+import Props from "../components/Props";
+import Home from "../components/Home";
+import State from "../components/State";
+import Lifestyle from '../components/Lifestyle'
+import Events from '../components/Events'
+import Key from '../components/Key'
+import Vdom from "../components/Vdom";
+import Refs from "../components/Refs";
+import Asrequest from "../components/Asrequest";
+import Context from "../components/Context";
+import Form from "../components/Form";
+import Routerr from "../components/Routerr";
+import Fragment from "../components/Fragment";
+import Memo from "../components/Memo";
+import UseEffect from "../components/useEffect";
 
 
-function App({}) {
+
+function Routs({}) {
 
 
   let addactive = (e) => {
@@ -35,8 +35,6 @@ function App({}) {
 
   return (
 
-  
-    
     <BrowserRouter>
       <div className="App">
         <div className="flex_container">
@@ -45,7 +43,7 @@ function App({}) {
               <div className="item home active">home </div>{" "}
             </Link>
             <Link to={"components"}>
-              <div className="item home">Components</div>{" "}
+              <div className="item components">Components</div>{" "}
             </Link>
             <Link to={"props"}>
               <div className="item home">Props</div>{" "}
@@ -71,7 +69,6 @@ function App({}) {
             <Link to={"vdom"}>
               <div className="item home">Virtual Dom</div>
             </Link>
-
             <Link to={"fragment"}>
               <div className="item home">Fragment</div>
             </Link>
@@ -95,7 +92,7 @@ function App({}) {
           <div className="article">
             
             <Routes>
-              <Route path="/" element={<Home name = {'Vasiliy'} />} />
+              <Route path="/" element={<Home addactive={addactive} />} />
               <Route path="components" element={<Components />} />
               <Route path="props" element={<Props name = {'Katya'} />} />
               <Route path="state" element={<State />} />
@@ -121,4 +118,4 @@ function App({}) {
   );
 }
 
-export default App;
+export default Routs;
