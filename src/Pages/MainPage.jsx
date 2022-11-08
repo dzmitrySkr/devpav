@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../Styles/mainpage.css";
-import ListOfBooks from "./ListOfBooks";
+import ListOfBooks from "../Pages/ListOfBooks";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Favorites from "./Favorites";
+import Favorites from "../Pages/Favorites";
 
 function MainPage() {
   //State for making active h2
@@ -36,7 +36,7 @@ function MainPage() {
         </Routes>
       </BrowserRouter>
       <footer>
-       made by <a href="https://dzmitryskr.github.io/introduse/">Dzmitry</a>
+        made by <a href="https://dzmitryskr.github.io/introduse/">Dzmitry</a>
       </footer>
     </>
   );

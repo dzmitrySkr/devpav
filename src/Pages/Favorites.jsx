@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import BookComp from "./BookComp";
-import Modal from "./Modal";
-
-import { BsList, BsFillGrid3X3GapFill } from "react-icons/bs";
+import BookComp from "../Components/BookComp";
+import Modal from "../Components/Modal";
 import "../Styles/mainpage.css";
-import Icons from "./Icons";
+import Icons from "../Components/Icons";
 
 function Favorites() {
   let [layout, setLayout] = useState(false);

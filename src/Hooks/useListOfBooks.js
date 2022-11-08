@@ -1,13 +1,7 @@
 import { useEffect } from "react";
-import axios from "axios";
 import { useState } from "react";
-import BookComp from "./BookComp";
-import "../Styles/mainpage.css";
-import Modal from "../Components/Modal";
-import Icons from "./Icons";
-import EditButtons from "./EditButtons";
 
-function ListOfBooks() {
+export function useListOfBooks() {
   let [books, setBooks] = useState([]);
   let [layout, setLayout] = useState(false);
   let [next, setNext] = useState(null);
@@ -52,37 +46,19 @@ function ListOfBooks() {
     setPrev(newpage.previous);
   }
 
-  return (
-    <>
-      <div className="wrapper_head">
-        <div className="search_book">
-          <input
-            type="search"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-          <button onClick={() => inputSearch(search)}>Search book</button>
-        </div>
-
-        <Icons setLayout={setLayout} layout={layout} />
-      </div>
-      <div className={layout ? "books_col" : "books_row"}>
-        {books.map((item) => (
-          <BookComp
-            key={item.id}
-            item={item}
-            setTextbook={setTextbook}
-            modal={modal}
-            setModal={setModal}
-          />
-        ))}
-      </div>
-
-      <EditButtons prev={prev} next={next} editPage={editPage} />
-
-      <Modal text={textbook} modal={modal} setModal={setModal} />
-    </>
-  );
+  return {
+    books,
+    layout,
+    next,
+    prev,
+    search,
+    textbook,
+    modal,
+    setLayout,
+    setSearch,
+    setTextbook,
+    editPage,
+    inputSearch,
+    setModal,
+  };
 }
-
-export default ListOfBooks;

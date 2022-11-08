@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../Styles/mainpage.css";
 import { BsList, BsFillGrid3X3GapFill } from "react-icons/bs";
 import "../Styles/mainpage.css";
