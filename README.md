@@ -5,7 +5,7 @@
 ### https://typ-ds.netlify.app
 ### https://exchange-ds.netlify.app
 ### https://shpora-ds.netlify.app
-### https://books-ds.netlify.app
+### https://mybooks-ds.netlify.app
 ### https://youtube-ds.netlify.app
 ### https://todo-with-tags.netlify.app
 
