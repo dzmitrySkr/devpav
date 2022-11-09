@@ -2,7 +2,6 @@ import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 
-
 function EnterPage() {
   //Переключатель подсветки страниц логина и регистрации
   let [toggle, setToggle] = useState(true);

@@ -16,7 +16,7 @@ function FavoritePage() {
     }
   }, []);
 
- //При изменении нашей переменной мы заносим в LS новые данные
+  //При изменении нашей переменной мы заносим в LS новые данные
   useEffect(() => {
     localStorage.setItem(token, JSON.stringify(favorite));
   }, [favorite]);
@@ -26,10 +26,10 @@ function FavoritePage() {
       <header>
         <ul>
           <Link to={"/main"}>
-            <li>Поиск</li>
+            <li>Search</li>
           </Link>
           <Link to={"/saved"}>
-            <li>Избранное</li>
+            <li style={{color:"white"}}>Favorites</li>
           </Link>
         </ul>
         <Link to="/">
@@ -56,7 +56,7 @@ function FavoritePage() {
           setFavorite([]);
         }}
       >
-        Удалить из ЛС
+        Delete
       </button>
     </>
   );
