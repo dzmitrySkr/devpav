@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux/es/exports";
 import React from "react";
-import ModuleBox from "./ModuleBox";
-import "../../styles/moduleBox.css";
-import ModuleModal from "./ModuleModal";
+import ModuleBox from '../components/modulcomp/ModuleBox'
+import "../styles/moduleBox.css";
+import ModuleModal from "../components/modulcomp/ModuleModal";
 import { useState } from "react";
 import { useEffect } from "react";
-import Loading from "../LoadingBck";
+import LoadingPage from '../pages/LoadingPage'
 
 function Moduls() {
   let [toggleModal, setToggleModal] = useState(false);
@@ -37,7 +36,7 @@ function Moduls() {
 
       <ModuleModal toggleModal={toggleModal} setToggleModal={setToggleModal} />
 
-      <Loading userSearch={storeModules} />
+      <LoadingPage userSearch={storeModules} />
     </>
   );
 }

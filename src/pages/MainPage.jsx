@@ -1,8 +1,8 @@
 import { Link, Routes, Route } from "react-router-dom";
 import "../styles/main.css";
-import Users from "./UsersPage/Users";
-import Moduls from "./ModulPage/Moduls";
-import Other from "./Other";
+import Users from "./UsersPage";
+import Moduls from "./ModulsPage";
+import Other from "./OtherPage";
 import { useNavigate } from "react-router-dom";
 
 function Main() {

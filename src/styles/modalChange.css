@@ -5,7 +5,7 @@
   width: 33%;
   height: 100vh;
   background-color: rgb(255, 255, 255);
-  border-left: 4px solid rgb(136, 0, 255);
+  border-left: 4px solid rgb(19, 73, 73);
   z-index: 10;
 }
 
@@ -21,10 +21,10 @@
   position: absolute;
   left: -42px;
   top: 10px;
-  background-color: rgb(255 180 147);
+  background-color: rgba(201, 133, 133, 0.455);
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid rgb(136, 0, 255);
+  border: 2px solid rgb(255, 255, 255);
   transition: 0.2s;
 }
 
@@ -41,7 +41,7 @@
   position: relative;
   width: 70%;
   height: 14px;
-  border: 1px solid rgb(61, 18, 91);
+  border: 1px solid rgb(19, 73, 73);
   border-radius: 4px;
   background-color: rgb(229, 229, 244);
 }

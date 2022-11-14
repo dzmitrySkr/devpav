@@ -4,8 +4,8 @@
   position: absolute;
   top: 80px;
   left: calc(50% - 150px);
-  background-color: #134a4a;
-  border: 2px solid rgb(255, 97, 179);
+  background-color: rgb(19, 73, 73);
+  border: 2px solid rgb(9, 48, 48);
   border-radius: 4px;
 }
 

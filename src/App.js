@@ -1,6 +1,6 @@
 import "./App.css";
-import LoginPage from "./components/LoginPage";
-import Main from "./components/Main";
+import LoginPage from "./pages/LoginPage";
+import Main from "./pages/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRouteLogin from "./protectedRouts/ProtectedRoutLogin";
 import { Provider } from "react-redux";

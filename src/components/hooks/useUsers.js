@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react";
-import React from "react";
-import "../../styles/users.css";
-import TableLine from "./TableLine";
-import TableTitleLine from "./TableTitleLine";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addUsers,
@@ -11,10 +7,8 @@ import {
   userSortByNameREV,
   userSortByDateREV,
 } from "../../store/action/addAction";
-import ModalAddUser from "./ModalAddUser";
-import Loading from "../LoadingBck";
 
-function Users() {
+export function useUsers() {
   const FULL_NAME_URL = process.env.REACT_APP_URL_USERS;
   const dispatch = useDispatch();
   const { storeUsers } = useSelector((state) => state);
@@ -60,46 +54,12 @@ function Users() {
     setSortOnName(false);
   };
 
-  return (
-    <>
-      <div className="title_wrapper">
-        <div className="title">
-          <h2>Users List</h2>
-        </div>
-        <div className="right">
-          <div className="add_btn">
-            <button
-              className="add"
-              onClick={() => {
-                return setModulToggle(true);
-              }}
-            >
-              Add user
-            </button>
-          </div>
-          <div className="search">
-            <input type="search_inp" onChange={(e) => search(e.target.value)} />
-          </div>
-        </div>
-      </div>
-
-      <div className="table_title table_item">
-        <TableTitleLine sortByName={sortByName} sortByDate={sortByDate} />
-        {userSearch.map((fulluser) => (
-          <TableLine fulluser={fulluser} key={fulluser.id} />
-        ))}
-      </div>
-
-      <div
-        onClick={() => setModulToggle(false)}
-        className={modulToggle ? "shadow" : "shadow off"}
-      ></div>
-
-      <ModalAddUser modulToggle={modulToggle} setModulToggle={setModulToggle} />
-
-      <Loading userSearch={userSearch} />
-    </>
-  );
+  return {
+    modulToggle,
+    setModulToggle,
+    userSearch,
+    search,
+    sortByName,
+    sortByDate,
+  };
 }
-
-export default React.memo(Users);
