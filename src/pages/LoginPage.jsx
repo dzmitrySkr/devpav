@@ -66,12 +66,13 @@ function LoginPage() {
             },
           ]}
         >
-          <Input onChange={() => setShow(false)} />
+          <Input onChange={() => setShow(false)} placeholder="dimas@dimas.com"/>
         </Form.Item>
 
         <Form.Item
           label="Password"
           name="password"
+          
           rules={[
             {
               required: true,
@@ -79,7 +80,7 @@ function LoginPage() {
             },
           ]}
         >
-          <Input.Password />
+          <Input.Password placeholder="dimasik"/>
         </Form.Item>
 
         <Form.Item

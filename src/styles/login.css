@@ -48,3 +48,19 @@ body {
   flex-wrap: wrap;
   flex-direction: column;
 }
+
+.hint {
+  color: #ffffff;
+  animation: hintanim 1s infinite;
+}
+
+@keyframes hintanim {
+  0%,
+  100% {
+    color: #ffffff;
+  }
+
+  50% {
+    color: #ff0000;
+  }
+}
