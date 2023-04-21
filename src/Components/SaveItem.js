@@ -35,7 +35,7 @@ function SaveItem({ item, favorite, setFavorite }) {
 
   return (
     <>
-      <div className="item" onClick={() => goMain(item)}>
+      <div className="item" style={{cursor:'pointer'}} onClick={() => goMain(item)}>
         <div>{item.name}</div>
         <div className="flex_wrapper">
           <div className="item_button edit" onClick={(e) => edit(e)}>
