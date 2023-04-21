@@ -14,17 +14,17 @@ function LoginPage() {
 
 
   const onFinish = (values) => {
-    axios
-      .post("https://typ-back-end.herokuapp.com/api/login", {
-        login: values.username,
-        password: values.password,
-      })
-      .then((res) => {
-        if (res.data.isAuth) {
-          dispatch(addToken(res.data.token.split('.')[0]));
+    // axios
+    //   .post("https://typ-back-end.herokuapp.com/api/login", {
+    //     login: values.username,
+    //     password: values.password,
+    //   })
+    //   .then((res) => {
+    //     if (res.data.isAuth) {
+          dispatch(addToken(9898));
           navigate("main");
-          localStorage.setItem('token', res.data.token.split('.')[0])
-        }})
+          localStorage.setItem('token', 32321321)
+        // }})
 
   };
 
